@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iniciar sesión | Il Salone Lia Vincenzo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css?v=20261019-responsive-services-8" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <section class="admin-login" id="loginView">
+        <div class="text-center mb-4">
+          <a class="brand text-decoration-none" href="index.html"
+            >IL SALONE<small>LIA VINCENZO</small></a
+          >
+          <p class="mt-4 mb-0">Iniciar sesión</p>
+        </div>
+        <form id="adminLogin" class="form-wrap" novalidate>
+          <label class="form-label" for="adminUser">Usuario</label
+          ><input
+            class="form-control mb-3"
+            id="adminUser"
+            required
+            autocomplete="username"
+            placeholder="Ingresa tu usuario"
+          />
+          <label class="form-label" for="adminPassword">Contraseña</label
+          ><input
+            class="form-control mb-4"
+            type="password"
+            id="adminPassword"
+            required
+            autocomplete="current-password"
+            placeholder="Ingresa tu contraseña"
+          />
+          <p class="small text-danger" id="loginError"></p>
+          <button class="btn btn-gold w-100" type="submit">
+            Ingresar al panel
+          </button>
+        </form>
+      </section>
+
+      <section class="admin-dashboard d-none" id="dashboardView">
+        <aside class="admin-sidebar">
+          <a class="brand text-decoration-none" href="index.html"
+            >IL SALONE<small>LIA VINCENZO</small></a
+          >
+          <a class="active" href="#dashboard"
+            ><i class="fa-solid fa-chart-line"></i> Inicio</a
+          >
+          <a href="#clients"><i class="fa-solid fa-users"></i> Clientes</a>
+          <a href="#reservations"
+            ><i class="fa-regular fa-calendar-check"></i> Reservas</a
+          >
+          <a href="#services"><i class="fa-solid fa-spa"></i> Servicios</a>
+          <a href="#dresses"><i class="fa-solid fa-shirt"></i> Vestidos</a>
+          <a href="#payments" data-admin-only><i class="fa-solid fa-wallet"></i> Pagos</a>
+          <a href="#consultations"><i class="fa-regular fa-envelope"></i> Consultas</a>
+          <a href="#users" data-admin-only><i class="fa-solid fa-user-gear"></i> Usuarios</a>
+          <a href="index.html"
+            ><i class="fa-solid fa-arrow-left"></i> Ver sitio web</a
+          >
+          <button class="admin-logout" id="logoutButton">
+            <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+          </button>
+        </aside>
+        <div class="admin-content">
+          <header
+            class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4"
+            id="dashboard"
+          >
+            <div>
+              <span class="eyebrow">Panel administrativo</span>
+              <h1>Resumen general</h1>
+            </div>
+            <span class="availability">Sesión activa</span>
+          </header>
+          <div class="row g-3">
+            <div class="col-sm-6 col-xl-4">
+              <a class="admin-stat admin-stat-link" href="#clients" data-admin-stat-target="clients">
+                <i class="fa-solid fa-users"></i><strong>—</strong
+                ><span>Clientes activos</span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+              <a class="admin-stat admin-stat-link" href="#reservations" data-admin-stat-target="reservations">
+                <i class="fa-regular fa-calendar-check"></i><strong>—</strong
+                ><span>Total de reservas</span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+              <a class="admin-stat admin-stat-link" href="#reservations" data-admin-stat-target="reservations" data-admin-reservation-date="today">
+                <i class="fa-regular fa-clock"></i><strong>—</strong
+                ><span>Reservas del día</span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+              <a class="admin-stat admin-stat-link" href="#reservations" data-admin-stat-target="reservations" data-admin-reservation-filter="vestido">
+                <i class="fa-solid fa-shirt"></i><strong>—</strong
+                ><span>Vestidos reservados</span>
+              </a>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+              <a class="admin-stat admin-stat-link" href="#reservations" data-admin-stat-target="reservations" data-admin-reservation-filter="servicio">
+                <i class="fa-solid fa-spa"></i><strong>—</strong
+                ><span>Servicios registrados</span>
+              </a>
+            </div>
+          </div>
+
+          <section class="admin-panel mt-4" id="clients">
+            <div class="admin-section-title">
+              <div>
+                <span class="eyebrow">Gestión de clientes</span>
+                <h2>Clientes</h2>
+              </div>
+              <button
+                class="btn btn-gold admin-action"
+                data-crud-create="clients"
+              >
+                <i class="fa-solid fa-plus me-1"></i>Registrar
+              </button>
+            </div>
+            <div class="admin-tools">
+              <input class="form-control" placeholder="Buscar cliente" /><button
+                class="btn btn-outline-gold admin-action"
+                data-action="Editar cliente"
+              >
+                Editar</button
+              ><button
+                class="btn btn-outline-gold admin-action"
+                data-action="Eliminar cliente"
+              >
+                Eliminar
+              </button>
+            </div>
+            <p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="reservations">
+            <div class="admin-section-title">
+              <div>
+                <span class="eyebrow">Gestión de reservas</span>
+                <h2>Reservas</h2>
+              </div>
+              <button
+                class="btn btn-gold admin-action"
+                data-crud-create="reservations"
+              >
+                Registrar reserva
+              </button>
+            </div>
+            <div class="admin-tools"></div>
+            <section class="admin-calendar mt-4" id="reservationCalendar" aria-label="Calendario de reservas" hidden>
+              <div class="admin-calendar-toolbar">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <button class="btn btn-outline-gold" type="button" data-calendar-back><i class="fa-solid fa-list me-1"></i>Volver al listado</button>
+                  <button class="btn btn-outline-gold" type="button" data-calendar-step="-1" aria-label="Periodo anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                  <h3 class="h5 mb-0" id="calendarTitle">Calendario</h3>
+                  <button class="btn btn-outline-gold" type="button" data-calendar-step="1" aria-label="Periodo siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                  <button class="btn btn-outline-gold" type="button" data-calendar-today>Hoy</button>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                  <label class="calendar-date-picker"><span class="visually-hidden">Elegir día para consultar</span><input class="form-control" type="date" aria-label="Elegir día para consultar" data-calendar-day-select></label>
+                  <select class="form-select" data-calendar-type aria-label="Filtrar tipo de reserva"><option value="all">Todos los tipos</option><option value="servicio">Servicios</option><option value="vestido">Vestidos</option></select>
+                  <select class="form-select" data-calendar-status aria-label="Filtrar estado"><option value="all">Todos los estados</option><option value="pendiente">Pendiente</option><option value="confirmada">Confirmada</option><option value="cancelada">Cancelada</option></select>
+                  <button class="btn btn-outline-gold" type="button" data-calendar-view="month">Mes</button>
+                  <button class="btn btn-outline-gold" type="button" data-calendar-view="week">Semana</button>
+                </div>
+              </div>
+              <div class="admin-calendar-weekdays" aria-hidden="true"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+              <div class="admin-calendar-grid" id="calendarGrid"></div>
+              <div class="admin-calendar-details" id="calendarDetails" aria-live="polite">Selecciona una fecha o una reserva para ver sus detalles.</div>
+            </section>
+            <p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="services">
+            <div class="admin-section-title"><div><span class="eyebrow">Catálogo del salón</span><h2>Servicios</h2></div><button class="btn btn-gold admin-action" data-admin-only data-crud-create="services">Registrar servicio</button></div>
+            <div class="admin-tools"></div><p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="dresses">
+            <div class="admin-section-title"><div><span class="eyebrow">Catálogo de alquiler</span><h2>Vestidos</h2></div><button class="btn btn-gold admin-action" data-admin-only data-crud-create="dresses">Registrar vestido</button></div>
+            <div class="admin-tools"></div><p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="payments" data-admin-only>
+            <div class="admin-section-title">
+              <div>
+                <span class="eyebrow">Gestión de pagos</span>
+                <h2>Pagos</h2>
+              </div>
+              <button
+                class="btn btn-gold admin-action"
+                data-crud-create="payments"
+              >
+                Registrar pago
+              </button>
+            </div>
+            <div class="admin-tools"></div>
+            <p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="consultations">
+            <div class="admin-section-title">
+              <div>
+                <span class="eyebrow">Mensajes recibidos desde el sitio</span>
+                <h2>Consultas</h2>
+              </div>
+            </div>
+            <div class="admin-tools"></div>
+            <p class="admin-feedback"></p>
+          </section>
+          <section class="admin-panel mt-4" id="users" data-admin-only>
+            <div class="admin-section-title">
+              <div>
+                <span class="eyebrow">Gestión de usuarios</span>
+                <h2>Usuarios administradores</h2>
+              </div>
+              <button
+                class="btn btn-gold admin-action"
+                data-crud-create="users"
+              >
+                Registrar usuario
+              </button>
+            </div>
+            <div class="admin-tools">
+              <button
+                class="btn btn-outline-gold admin-action"
+                data-action="Editar usuario"
+              >
+                Editar usuario</button
+              ><button
+                class="btn btn-outline-gold admin-action"
+                data-action="Eliminar usuario"
+              >
+                Eliminar usuario
+              </button>
+            </div>
+            <p class="admin-feedback"></p>
+          </section>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      (() => {
+        sessionStorage.removeItem("ilSaloneAdmin");
+        let token = null;
+        const login = document.querySelector("#adminLogin");
+        const errorBox = document.querySelector("#loginError");
+        const dashboard = document.querySelector("#dashboardView");
+        login.addEventListener(
+          "submit",
+          async (event) => {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            errorBox.textContent = "";
+            if (window.location.protocol === "file:") {
+              errorBox.textContent =
+                "Abre el panel desde http://localhost:3000/admin.html con el servidor iniciado; file:/// no puede conectarse a la base de datos.";
+              return;
+            }
+            if (!login.checkValidity()) {
+              login.classList.add("was-validated");
+              return;
+            }
+            try {
+              const response = await fetch("/api/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  usuario: document.querySelector("#adminUser").value,
+                  contrasena: document.querySelector("#adminPassword").value,
+                }),
+              });
+              const data = await response.json();
+              if (!response.ok)
+                throw new Error(data.error || "No se pudo iniciar sesión.");
+              token = data.token;
+              window.ilSaloneAdminToken = token;
+              window.ilSaloneAdminRole = data.rol;
+              window.dispatchEvent(new Event("admin-authenticated"));
+              document.querySelector("#loginView").classList.add("d-none");
+              dashboard.classList.remove("d-none");
+            } catch (error) {
+              errorBox.textContent =
+                error instanceof TypeError
+                  ? "No se pudo conectar al servidor. Ejecuta npm start y abre http://localhost:3000/admin.html."
+                  : error.message;
+            }
+          },
+          true,
+        );
+        document.querySelector("#logoutButton").addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            token = null;
+            window.ilSaloneAdminToken = null;
+            window.ilSaloneAdminRole = null;
+            dashboard.classList.add("d-none");
+            document.querySelector("#loginView").classList.remove("d-none");
+            login.reset();
+          },
+          true,
+        );
+      })();
+    </script>
+    <script>
+      (() => {
+        const content = document.querySelector(".admin-content");
+        const overviewHeader = content.querySelector("header");
+        const overviewStats = overviewHeader.nextElementSibling;
+        const overview = document.createElement("div");
+        overview.className = "admin-overview";
+        overviewHeader.before(overview);
+        overview.append(overviewHeader, overviewStats);
+        const panels = [...document.querySelectorAll(".admin-panel")];
+        const links = [
+          ...document.querySelectorAll('.admin-sidebar a[href^="#"]'),
+        ];
+        const showSection = (requestedId, sourceLink = null) => {
+          const id = window.ilSaloneAdminRole === "empleado" && ["payments", "users"].includes(requestedId)
+            ? "dashboard"
+            : requestedId;
+          const dashboard = id === "dashboard";
+          overview.classList.toggle("is-hidden", !dashboard);
+          panels.forEach((panel) =>
+            panel.classList.toggle("is-active", panel.id === id),
+          );
+          const activeLink = sourceLink || links.find((link) =>
+            link.getAttribute("href") === `#${id}` && !link.hasAttribute("data-admin-reservation-filter"),
+          );
+          links.forEach((link) => link.classList.toggle("active", link === activeLink));
+          history.replaceState(null, "", `#${id}`);
+          window.dispatchEvent(
+            new CustomEvent("admin-section", { detail: { id } }),
+          );
+        };
+        window.addEventListener("admin-authenticated", () => {
+          showSection(location.hash.slice(1) || "dashboard");
+        });
+        links.forEach((link) =>
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const reservationFilter = link.dataset.adminReservationFilter;
+            if (reservationFilter) {
+              window.dispatchEvent(new CustomEvent("admin-reservation-view", {
+                detail: { filter: reservationFilter },
+              }));
+            }
+            showSection(link.getAttribute("href").slice(1), link);
+          }),
+        );
+        overview.addEventListener("click", (event) => {
+          const card = event.target.closest("[data-admin-stat-target]");
+          if (!card) return;
+          event.preventDefault();
+          if (card.dataset.adminStatTarget === "reservations") {
+            window.dispatchEvent(new CustomEvent("admin-reservation-view", {
+              detail: {
+                filter: card.dataset.adminReservationFilter || "all",
+                date: card.dataset.adminReservationDate || "",
+              },
+            }));
+          }
+          showSection(card.dataset.adminStatTarget);
+        });
+        showSection(location.hash.slice(1) || "dashboard");
+      })();
+    </script>
+    <script>
+      (() => {
+        const definitions = {
+          clients: {
+            api: "clientes",
+            title: "cliente",
+            fields: [
+              ["nombre", "Nombre completo", "text", true],
+              ["telefono", "Celular", "tel", true],
+              ["correo", "Correo", "email"],
+              ["fecha_nacimiento", "Fecha de nacimiento", "date"],
+            ],
+            columns: ["nombre", "telefono", "correo"],
+          },
+          services: {
+            api: "servicios",
+            title: "servicio",
+            fields: [
+              ["nombre", "Nombre del servicio", "text", true],
+              ["descripcion", "Descripción", "textarea"],
+              ["precio", "Precio desde (Bs)", "money", true],
+              ["duracion_minutos", "Duración máxima (minutos)", "number", true],
+              ["activo", "Activo", "select"],
+              ["imagen", "Imagen del servicio", "image"],
+            ],
+            columns: ["nombre", "descripcion", "precio", "duracion_minutos", "activo", "imagen"],
+          },
+          dresses: {
+            api: "vestidos",
+            title: "vestido",
+            fields: [
+              ["nombre", "Nombre", "text", true],
+              ["categoria", "Categoría", "text"],
+              ["color", "Color", "text"],
+              ["talla", "Talla", "text"],
+              ["precio", "Precio (Bs)", "money", true],
+              ["imagen", "Fotografía principal", "image"],
+              ["descripcion", "Descripción del vestido", "textarea"],
+              ["detalles", "Detalles confirmados del diseño", "textarea"],
+              ["evento_recomendado", "Evento recomendado", "text"],
+              ["disponible", "Disponible para consulta", "select"],
+              ["activo", "Activo en el catálogo", "select"],
+            ],
+            columns: ["nombre", "categoria", "color", "talla", "precio", "descripcion", "disponible", "activo", "imagen"],
+          },
+          reservations: {
+            api: "reservas",
+            title: "reserva",
+            fields: [
+              ["cliente_id", "Cliente", "client", true],
+              ["tipo", "Tipo (servicio o vestido)", "bookingtype", true],
+              ["servicio_id", "Servicio", "service"],
+              ["vestido_id", "Vestido", "dress"],
+              ["sucursal", "Sucursal", "branch"],
+              ["fecha", "Fecha", "date", true],
+              ["fecha_evento", "Fecha de uso / evento", "date"],
+              ["hora", "Hora", "timeslot"],
+              ["estado", "Estado de reserva", "reservationstatus", true],
+              ["notas", "Notas", "textarea"],
+            ],
+            columns: ["codigo", "cliente", "tipo", "servicio", "vestido", "fecha", "fecha_evento", "hora", "sucursal", "estado", "pago_total", "precio_reserva", "pago_estado"],
+          },
+          payments: {
+            api: "pagos",
+            title: "pago",
+            fields: [
+              ["reserva_id", "Reserva", "reservation", true],
+              ["monto", "Monto (Bs)", "money", true],
+              ["tipo", "Tipo", "paymenttype", true],
+              ["metodo", "Método", "paymentmethod", true],
+              ["estado", "Estado del pago", "paymentstatus", true],
+              ["fecha_recepcion", "Fecha de recepción del pago", "date"],
+            ],
+            columns: ["cliente", "reserva_id", "vestido", "servicio", "monto", "tipo", "metodo", "estado", "fecha_registro"],
+          },
+          consultations: {
+            api: "consultas",
+            title: "consulta",
+            fields: [],
+            columns: ["nombre", "correo", "celular", "mensaje", "fecha_consulta"],
+            readOnly: true,
+          },
+          users: {
+            api: "usuarios",
+            title: "usuario administrador",
+            fields: [
+              ["nombre", "Nombre completo", "text", true],
+              ["usuario", "Usuario", "text", true],
+              ["contrasena", "Contraseña", "password"],
+              ["rol", "Rol", "userrole", true],
+            ],
+            columns: ["nombre", "usuario", "rol"],
+          },
+        };
+        let activePanel = "";
+        const content = document.querySelector(".admin-content");
+        const api = async (url, options = {}) => {
+          const apiUrl = new URL(`/api/${url}`, window.location.origin);
+          const response = await fetch(apiUrl, {
+            ...options,
+            headers: {
+              Authorization: `Bearer ${window.ilSaloneAdminToken}`,
+              "Content-Type": "application/json",
+              ...(options.headers || {}),
+            },
+          });
+          const responseText = await response.text();
+          let data;
+          try {
+            data = JSON.parse(responseText);
+          } catch {
+            throw new Error(
+              `La ruta ${apiUrl.pathname} respondió una página que no es JSON (HTTP ${response.status}). Verifica que el backend actualizado esté desplegado en este mismo servicio.`,
+            );
+          }
+          if (!response.ok)
+            throw new Error(data.error || "No se pudo completar la operación.");
+          return data;
+        };
+        const refreshDashboardMetrics = async () => {
+          if (!window.ilSaloneAdminToken) return;
+          const stats = await api("dashboard");
+          const values = [stats.clientes, stats.reservas, stats.reservasHoy, stats.vestidos, stats.servicios];
+          content.querySelectorAll(".admin-stat strong").forEach((item, index) => {
+            item.textContent = values[index] ?? 0;
+          });
+        };
+        const label = (name) =>
+          name === "fecha_pago" ? "Fecha de recepción del pago" : name === "fecha_registro" ? "Fecha de registro" : name
+            .replaceAll("_", " ")
+            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+        const escape = (value) =>
+          String(value ?? "").replace(
+            /[&<>"]/g,
+            (character) =>
+              ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[
+                character
+              ],
+          );
+        const paymentDateTimeText = (value) => {
+          if (!value) return "—";
+          const raw = value instanceof Date ? value.toISOString() : String(value).trim();
+          if (/^\d{4}-\d{2}-\d{2}$/.test(raw))
+            return raw.split("-").reverse().join("/");
+          const iso = raw.includes("T") ? raw : raw.replace(" ", "T");
+          const instant = new Date(/[zZ]|[+-]\d{2}:\d{2}$/.test(iso) ? iso : iso + "Z");
+          if (Number.isNaN(instant.getTime())) return raw;
+          return new Intl.DateTimeFormat("es-BO", {
+            timeZone: "America/La_Paz",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hourCycle: "h23",
+          }).format(instant);
+        };
+        const paymentLocalCalendarDate = (value) => {
+          if (!value) return "";
+          const raw = String(value).trim();
+          if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+          const normalized = raw.includes("T") ? raw : raw.replace(" ", "T");
+          const instant = new Date(/[zZ]|[+-]\d{2}:\d{2}$/.test(normalized) ? normalized : `${normalized}Z`);
+          if (Number.isNaN(instant.getTime())) return raw.slice(0, 10);
+          const parts = Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
+            timeZone: "America/La_Paz", year: "numeric", month: "2-digit", day: "2-digit",
+          }).formatToParts(instant).map(({ type, value }) => [type, value]));
+          return `${parts.year}-${parts.month}-${parts.day}`;
+        };
+        const panelData = (id) =>
+          content.querySelector(`#${id} .admin-feedback`);
+        const paymentIsPending = (row) =>
+          String(row?.estado || "").trim().toLocaleLowerCase("es") === "pendiente";
+        const normalizeSearchText = (value) => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("es");
+        const isAdministrator = () => window.ilSaloneAdminRole === "administrador";
+        const mayEdit = (id) =>
+          isAdministrator() || (window.ilSaloneAdminRole === "empleado" && id === "reservations");
+        const mayDelete = () => isAdministrator();
+        let reservationFilter = "all";
+        let reservationSearch = "";
+        let reservationDateFilter = "";
+        let reservationRangeFrom = "";
+        let reservationRangeTo = "";
+        let paymentRangeFrom = "";
+        let paymentRangeTo = "";
+        let paymentDrawRequest = 0;
+        let calendarCursor = new Date();
+        let calendarMode = "month";
+        let calendarRequest = 0;
+        const todayAsLocalDate = () => {
+          const now = new Date();
+          return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+        };
+        const showMessage = (id, message, danger = false) => {
+          const target = panelData(id);
+          target.textContent = message;
+          target.className = `admin-feedback ${danger ? "text-danger" : "availability"}`;
+        };
+        const isoCalendarDate = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+        const calendarDateText = (date) => new Intl.DateTimeFormat("es-BO", { timeZone: "America/La_Paz", day: "numeric", month: "long", year: "numeric" }).format(date);
+        const calendarDate = (value) => new Date(`${value}T12:00:00`);
+        const calendarInterval = () => {
+          const anchor = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth(), calendarCursor.getDate(), 12);
+          if (calendarMode === "week") {
+            const weekday = (anchor.getDay() + 6) % 7;
+            const start = new Date(anchor);
+            start.setDate(anchor.getDate() - weekday);
+            const end = new Date(start);
+            end.setDate(start.getDate() + 6);
+            return { start, end };
+          }
+          const first = new Date(anchor.getFullYear(), anchor.getMonth(), 1, 12);
+          const weekday = (first.getDay() + 6) % 7;
+          const start = new Date(first);
+          start.setDate(first.getDate() - weekday);
+          const end = new Date(start);
+          end.setDate(start.getDate() + 41);
+          return { start, end };
+        };
+        let calendarRows = [];
+        let calendarVisibleRows = [];
+        const renderCalendar = async () => {
+          if (!window.ilSaloneAdminToken || !content.querySelector("#calendarGrid")) return;
+          const request = ++calendarRequest;
+          const { start, end } = calendarInterval();
+          const from = isoCalendarDate(start);
+          const to = isoCalendarDate(end);
+          const title = document.querySelector("#calendarTitle");
+          title.textContent = calendarMode === "month"
+            ? new Intl.DateTimeFormat("es-BO", { month: "long", year: "numeric", timeZone: "America/La_Paz" }).format(calendarCursor)
+            : `${calendarDateText(start)} — ${calendarDateText(end)}`;
+          const dayPicker = content.querySelector("[data-calendar-day-select]");
+          if (dayPicker && !dayPicker.value) dayPicker.value = todayAsLocalDate();
+          try {
+            const items = await api(`calendario?${new URLSearchParams({ desde: from, hasta: to })}`);
+            if (request !== calendarRequest) return;
+            calendarRows = items;
+            const typeFilter = content.querySelector("[data-calendar-type]").value;
+            const statusFilter = content.querySelector("[data-calendar-status]").value;
+            const visible = items.filter((item) =>
+              (typeFilter === "all" || item.tipo === typeFilter) &&
+              (statusFilter === "all" || String(item.estado || "").toLocaleLowerCase("es") === statusFilter),
+            );
+            calendarVisibleRows = visible;
+            const days = [];
+            const cursor = new Date(start);
+            while (cursor <= end) { days.push(new Date(cursor)); cursor.setDate(cursor.getDate() + 1); }
+            const grid = content.querySelector("#calendarGrid");
+            const mobileAgenda = window.matchMedia("(max-width: 767.98px)").matches;
+            const mobileDate = content.querySelector("[data-calendar-day-select]");
+            if (mobileAgenda && mobileDate?.value) {
+              const selected = calendarDate(mobileDate.value);
+              for (let index = days.length - 1; index >= 0; index--) {
+                if (isoCalendarDate(days[index]) !== isoCalendarDate(selected)) days.splice(index, 1);
+              }
+            }
+            grid.classList.toggle("is-week-view", calendarMode === "week");
+            grid.classList.toggle("is-mobile-agenda", mobileAgenda);
+            grid.innerHTML = days.map((day) => {
+              const iso = isoCalendarDate(day);
+              const dayRows = visible.filter((item) => item.fecha_calendario === iso);
+              const muted = calendarMode === "month" && day.getMonth() !== calendarCursor.getMonth();
+              const today = iso === todayAsLocalDate();
+              const eventButtons = dayRows.slice(0, 3).map((item) => {
+                const isDress = item.tipo === "vestido";
+                const duration = isDress ? 30 : Math.max(1, Number(item.duracion_minutos) || 60);
+                const startMinute = Number(String(item.hora || "00:00").slice(0, 2)) * 60 + Number(String(item.hora || "00:00").slice(3, 5));
+                const endTime = item.hora ? `${String(Math.floor((startMinute + duration) / 60) % 24).padStart(2, "0")}:${String((startMinute + duration) % 60).padStart(2, "0")}` : "";
+                const state = String(item.estado || "pendiente").toLocaleLowerCase("es").replaceAll(" ", "-");
+                return `<button type="button" class="calendar-event ${isDress ? "is-dress" : "is-service"} state-${escape(state)}" data-calendar-reservation="${Number(item.id)}"><span>${escape(item.hora || "Sin hora")} ${endTime ? `– ${endTime}` : ""}</span><strong>${escape(item.cliente)}</strong><small>${escape(isDress ? item.vestido : item.servicio)}</small></button>`;
+              }).join("");
+              const extraCount = Math.max(0, dayRows.length - 3);
+              const weekday = new Intl.DateTimeFormat("es-BO", { weekday: "long", timeZone: "America/La_Paz" }).format(day);
+              return `<div class="calendar-day${muted ? " is-outside" : ""}${today ? " is-today" : ""}" data-calendar-date="${iso}"><button type="button" class="calendar-day-number" data-calendar-day="${iso}"><span>${day.getDate()}</span><span class="calendar-day-label">${escape(weekday)} · ${escape(calendarDateText(day))}</span></button><div class="calendar-day-events">${eventButtons || `<span class="calendar-empty">Sin citas</span>`}${extraCount ? `<button type="button" class="calendar-more" data-calendar-more="${iso}">+${extraCount} reservas más</button>` : ""}</div></div>`;
+            }).join("");
+          } catch (error) {
+            content.querySelector("#calendarGrid").innerHTML = `<p class="text-danger p-3">${escape(error.message)}</p>`;
+          }
+        };
+        const reportDocument = (report) => {
+          const dateText = (value) => {
+            if (!value) return "—";
+            const raw = String(value).trim();
+            return /^\d{4}-\d{2}-\d{2}(?:T|$)/.test(raw)
+              ? raw.slice(0, 10).split("-").reverse().join("/")
+              : paymentDateTimeText(raw);
+          };
+          const amountText = (value) => value == null ? "—" : `Bs ${Number(value).toFixed(2)}`;
+          const grid = (rows, kind) => {
+            const isDress = kind === "vestido";
+            const headings = isDress
+              ? ["Código", "Cliente", "Vestido", "Fecha de evento", "Hora de prueba", "Sucursal", "Estado", "Total", "Estado del pago", "Fecha de pago", "Monto pagado"]
+              : ["Código", "Cliente", "Servicio", "Fecha de evento", "Hora", "Sucursal", "Estado", "Total", "Estado del pago", "Fecha de pago", "Monto pagado"];
+            const cells = rows.filter((row) => row.tipo === kind).map((row) => [row.codigo, row.cliente, isDress ? row.vestido : row.servicio, dateText(row.fecha_evento), row.hora || "—", isDress ? "Boutique Lía Vincenzo" : row.sucursal || "—", row.estado || "—", amountText(row.total), row.estado_pago || "Sin pagos", row.fecha_pago ? paymentDateTimeText(row.fecha_pago) : "—", amountText(row.monto_pago)]);
+            return `<section><h2>Reservas de ${isDress ? "Vestidos" : "Servicios"}</h2><table><thead><tr>${headings.map((heading) => `<th>${heading}</th>`).join("")}</tr></thead><tbody>${cells.length ? cells.map((row) => `<tr>${row.map((value) => `<td>${escape(value)}</td>`).join("")}</tr>`).join("") : `<tr><td colspan="${headings.length}">Sin reservas en el periodo.</td></tr>`}</tbody></table></section>`;
+          };
+          const summary = report.summary;
+          const period = report.desde || report.hasta
+            ? `${report.desde ? dateText(report.desde) : "Inicio"} — ${report.hasta ? dateText(report.hasta) : "Actualidad"}`
+            : "Todo el historial";
+          return `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Informe administrativo - Il Salone Lia Vincenzo</title><style>
+            @page { size: Letter portrait; margin: 14mm 11mm 18mm; @bottom-right { content: "Página " counter(page) " de " counter(pages); font: 9pt Arial,sans-serif; color: #555; } }
+            * { box-sizing: border-box; } body { font: 9pt Arial,sans-serif; color: #171513; margin: 0; } header { border-bottom: 2px solid #9d762f; padding-bottom: 8px; margin-bottom: 14px; } h1 { font-size: 18pt; margin: 0 0 3px; } h2 { font-size: 12pt; margin: 18px 0 7px; } .meta { display: flex; gap: 22px; margin-top: 8px; } .summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin: 12px 0; } .summary div { border: 1px solid #aaa; padding: 7px; } .summary b { display: block; font-size: 12pt; margin-top: 3px; } table { width: 100%; border-collapse: collapse; font-size: 8pt; table-layout: fixed; } th,td { border: 1px solid #888; padding: 5px 4px; text-align: left; overflow-wrap: anywhere; } th { background: #eee; } thead { display: table-header-group; } tr { break-inside: avoid; page-break-inside: avoid; } section { break-inside: auto; } .footer { border-top: 1px solid #aaa; margin-top: 20px; padding-top: 6px; color: #555; font-size: 8pt; } @media screen { body { max-width: 1100px; margin: 24px auto; padding: 24px; } }
+            </style></head><body><header><h1>IL SALONE LIA VINCENZO</h1><strong>INFORME ADMINISTRATIVO</strong><div class="meta"><span>Generado: ${escape(new Date().toLocaleString("es-BO"))}</span><span>Periodo de reserva/evento: ${escape(period)}</span></div></header>
+            <h2>Resumen de reservas</h2><div class="summary"><div>Total de reservas<b>${summary.reservas}</b></div><div>Reservas de servicios<b>${summary.servicios}</b></div><div>Reservas de vestidos<b>${summary.vestidos}</b></div><div>Reservas pendientes<b>${summary.pendientes}</b></div><div>Confirmadas / completadas<b>${summary.confirmadas}</b></div></div>
+            ${grid(report.rows, "vestido")}${grid(report.rows, "servicio")}<div class="footer">Il Salone Lia Vincenzo · Informe administrativo para uso interno</div></body></html>`;
+        };
+        const paymentReportDocument = (report) => {
+          const dateText = (value) => value ? (/^\d{4}-\d{2}-\d{2}$/.test(String(value)) ? String(value).split("-").reverse().join("/") : paymentDateTimeText(value)) : "No registrada";
+          const money = (value) => `Bs ${Number(value || 0).toFixed(2)}`;
+          const rows = report.rows.map((row) => `<tr><td>${escape(row.codigo_reserva)}</td><td>${escape(row.cliente)}</td><td>${escape(row.reserva_tipo === "vestido" ? row.vestido : row.servicio)}</td><td>${escape(money(row.monto))}</td><td>${escape(row.tipo)}</td><td>${escape(row.metodo || "—")}</td><td>${escape(row.estado)}</td><td>${escape(dateText(row.fecha))}</td></tr>`).join("");
+          const period = report.desde || report.hasta ? `${report.desde ? dateText(report.desde) : "Sin límite inicial"} — ${report.hasta ? dateText(report.hasta) : "Sin límite final"}` : "Todos los pagos registrados";
+          return `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Informe financiero — IL SALONE LIA VINCENZO</title><style>@page{size:Letter landscape;margin:14mm}body{font:10pt Arial,sans-serif;color:#171513}header{border-bottom:2px solid #9d762f;padding-bottom:10px}h1{font-size:18pt}.summary{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.summary div{border:1px solid #aaa;padding:8px;min-width:160px}table{width:100%;border-collapse:collapse;font-size:8.5pt}th,td{border:1px solid #888;padding:6px;text-align:left;overflow-wrap:anywhere}th{background:#eee}.total{margin-top:14px;text-align:right;font-size:13pt;font-weight:bold}@media screen{body{max-width:1200px;margin:24px auto;padding:24px}}</style></head><body><header><h1>Informe financiero — IL SALONE LIA VINCENZO</h1><p>Periodo de registro de pagos: ${escape(period)}</p></header><div class="summary"><div>Pagos incluidos<strong>${report.summary.pagos}</strong></div><div>Pagos completados<strong>${report.summary.recibidos}</strong></div><div>Pagos pendientes<strong>${report.summary.pendientes}</strong></div></div><table><thead><tr><th>Reserva</th><th>Cliente</th><th>Servicio o vestido</th><th>Monto pagado</th><th>Tipo de pago</th><th>Método</th><th>Estado</th><th>Fecha de registro</th></tr></thead><tbody>${rows || '<tr><td colspan="8">No hay pagos registrados en el período seleccionado.</td></tr>'}</tbody></table><p class="total">Total de los pagos incluidos: ${money(report.summary.monto_total)}</p></body></html>`;
+        };
+        const renderTable = (panel, id, rows, columns = definitions[id].columns, emptyMessage) => {
+          const config = definitions[id];
+          let table = panel.querySelector(".admin-table-wrap");
+          if (!table) {
+            table = document.createElement("div");
+            table.className = "admin-table-wrap table-responsive mt-4";
+            panel.querySelector(".admin-feedback").before(table);
+          }
+          const canEdit = !config.readOnly && mayEdit(id);
+          const canDelete = !config.readOnly && mayDelete();
+          const hasActions = canEdit || canDelete;
+          table.innerHTML = `<table class="table align-middle"><thead><tr>${columns.map((column) => `<th>${({ fecha: "Fecha de evento", fecha_evento: "Fecha de evento", pago_total: "Pago", precio_reserva: "Total", pago_estado: "Estado del pago", fecha_consulta: "Fecha y hora" })[column] || label(column)}</th>`).join("")}${hasActions ? "<th>Acciones</th>" : ""}</tr></thead><tbody>${rows.length ? rows.map((row) => `<tr>${columns.map((column) => {
+            let value = row[column];
+            if (column === "sucursal" && row.tipo === "vestido") value = "Boutique Lía Vincenzo";
+            if (column === "fecha_evento" && row.tipo === "vestido") value = row.fecha_evento || "—";
+            if (column === "reserva_id" && row.codigo_reserva) value = row.codigo_reserva;
+            if (id === "payments" && column === "fecha_pago") value = value ? paymentDateTimeText(value) : "No registrada";
+            if (id === "payments" && column === "fecha_registro") value = paymentDateTimeText(value);
+            if (column === "pago_total" && value != null) value = `Bs ${Number(value).toFixed(2)}`;
+            if (column === "precio_reserva" && value != null) value = `Bs ${Number(value).toFixed(2)}`;
+            const displayValue = column === "activo" || column === "disponible" ? (Number(value) ? "Sí" : "No") : value ?? "—";
+            if (column === "imagen" && value) {
+              return `<td data-label="Imagen"><img class="admin-image-thumb" src="${escape(value)}" alt="Imagen de ${escape(row.nombre || "registro")}" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="admin-image-missing" hidden>Sin imagen disponible</span></td>`;
+            }
+            if (id === "services" && column === "descripcion") {
+              return `<td data-label="Descripción"><div class="service-description-cell"><span class="service-description-preview">${escape(displayValue)}</span>${value ? `<details><summary>Ver descripción completa</summary><p>${escape(value)}</p></details>` : ""}</div></td>`;
+            }
+            return `<td data-label="${escape(label(column))}">${escape(displayValue)}</td>`;
+          }).join("")}${hasActions ? `<td data-label="Acciones" class="text-nowrap">${id !== "payments" || paymentIsPending(row) ? `<button class="btn btn-sm btn-outline-gold" data-crud-edit="${id}" data-id="${row.id}">Editar</button> <button class="btn btn-sm btn-outline-danger" data-crud-delete="${id}" data-id="${row.id}">Eliminar</button>` : `<span class="text-body-secondary">Protegido</span>`}</td>` : ""}</tr>`).join("") : `<tr><td colspan="${columns.length + (hasActions ? 1 : 0)}" class="text-center py-4">${emptyMessage || (reservationSearch ? "No se encontró una reserva con ese nombre o código." : "Aún no hay registros.")}</td></tr>`}</tbody></table>`;
+        };
+        const renderReservations = (panel) => {
+          const rows = panel._rows || [];
+          const query = reservationSearch.trim().toLocaleLowerCase("es");
+          const visible = rows.filter((row) => {
+            const matchesType = query || reservationFilter === "all" || row.tipo === reservationFilter;
+            const matchesCode = !query || normalizeSearchText([row.cliente,row.codigo,row.servicio,row.vestido,row.cliente_telefono,row.cliente_correo].filter(Boolean).join(" ")).includes(normalizeSearchText(query));
+            const reservationDate = String(row.fecha_evento || row.fecha || "").slice(0, 10);
+            const matchesDate = !reservationDateFilter || reservationDate === reservationDateFilter;
+            const matchesRange = (!reservationRangeFrom || reservationDate >= reservationRangeFrom) && (!reservationRangeTo || reservationDate <= reservationRangeTo);
+            return matchesType && matchesCode && matchesDate && matchesRange;
+          }).sort((a, b) => {
+            const dateA = String(a.fecha_evento || a.fecha || "").slice(0, 10);
+            const dateB = String(b.fecha_evento || b.fecha || "").slice(0, 10);
+            return dateA.localeCompare(dateB) || String(a.hora || "").localeCompare(String(b.hora || "")) || Number(a.id) - Number(b.id);
+          });
+          const serviceColumns = ["codigo", "cliente", "tipo", "servicio", "fecha", "hora", "sucursal", "estado", "pago_total", "precio_reserva", "pago_estado"];
+          const dressColumns = ["codigo", "cliente", "tipo", "vestido", "fecha_evento", "hora", "sucursal", "estado", "pago_total", "precio_reserva", "pago_estado"];
+          if (reservationFilter !== "all") {
+            renderTable(panel, "reservations", visible, reservationFilter === "vestido" ? dressColumns : serviceColumns, reservationRangeFrom || reservationRangeTo ? "No hay reservas dentro del rango seleccionado." : undefined);
+            if (!mayDelete()) panel.querySelectorAll("[data-crud-delete]").forEach((button) => button.remove());
+            renderCalendar();
+            return;
+          }
+          let wrap = panel.querySelector(".admin-table-wrap");
+          if (!wrap) {
+            wrap = document.createElement("div");
+            wrap.className = "admin-table-wrap table-responsive mt-4";
+            panel.querySelector(".admin-feedback").before(wrap);
+          }
+          const services = visible.filter((row) => row.tipo === "servicio");
+          const dresses = visible.filter((row) => row.tipo === "vestido");
+          const tableMarkup = (tableRows, columns, title) => `<h6 class="mt-4">${title}</h6><table class="table align-middle"><thead><tr>${columns.map((column) => `<th>${({ fecha: "Fecha de evento", fecha_evento: "Fecha de evento", pago_total: "Pago", precio_reserva: "Total", pago_estado: "Estado del pago" })[column] || label(column)}</th>`).join("")}<th>Acciones</th></tr></thead><tbody>${tableRows.length ? tableRows.map((row) => `<tr>${columns.map((column) => { let value = row[column]; if (column === "sucursal" && row.tipo === "vestido") value = "Boutique Lía Vincenzo"; if (column === "pago_total" && value != null) value = `Bs ${Number(value).toFixed(2)}`; if (column === "precio_reserva" && value != null) value = `Bs ${Number(value).toFixed(2)}`; return `<td data-label="${escape(label(column))}">${escape(value ?? "—")}</td>`; }).join("")}<td data-label="Acciones" class="text-nowrap"><button class="btn btn-sm btn-outline-gold" data-crud-edit="reservations" data-id="${row.id}">Editar</button> <button class="btn btn-sm btn-outline-danger" data-crud-delete="reservations" data-id="${row.id}">Eliminar</button></td></tr>`).join("") : `<tr><td colspan="${columns.length + 1}" class="text-center py-4">${reservationRangeFrom || reservationRangeTo ? "No hay reservas dentro del rango seleccionado." : reservationSearch ? "No se encontró una reserva con ese nombre o código." : "Aún no hay registros."}</td></tr>`}</tbody></table>`;
+          wrap.innerHTML = tableMarkup(services, serviceColumns, "Reservas de Servicios") + tableMarkup(dresses, dressColumns, "Reservas de Vestidos");
+          if (!mayDelete()) wrap.querySelectorAll("[data-crud-delete]").forEach((button) => button.remove());
+          renderCalendar();
+        };
+        const draw = async (id) => {
+          const config = definitions[id];
+          if (!config || !window.ilSaloneAdminToken) return;
+          try {
+            const panel = content.querySelector(`#${id}`);
+            if (id === "payments") {
+              const currentFrom = panel.querySelector("[data-payment-from]");
+              const currentTo = panel.querySelector("[data-payment-to]");
+              if (currentFrom) paymentRangeFrom = currentFrom.value;
+              if (currentTo) paymentRangeTo = currentTo.value;
+              if (paymentRangeFrom && paymentRangeTo && paymentRangeFrom > paymentRangeTo) {
+                showMessage("payments", "La fecha inicial no puede ser posterior a la fecha final.", true);
+                return;
+              }
+            }
+            const query = id === "payments" && (paymentRangeFrom || paymentRangeTo)
+              ? `?${new URLSearchParams({ desde: paymentRangeFrom, hasta: paymentRangeTo })}`
+              : "";
+            const requestId = id === "payments" ? ++paymentDrawRequest : 0;
+            const fetchedRows = await api(`${config.api}${query}`);
+            if (id === "payments" && requestId !== paymentDrawRequest) return;
+            const rows = id === "payments"
+              ? fetchedRows.filter((row) => {
+                  const registered = paymentLocalCalendarDate(row.fecha_registro || row.fecha);
+                  if (!paymentRangeFrom && !paymentRangeTo) return true;
+                  return registered && (!paymentRangeFrom || registered >= paymentRangeFrom) && (!paymentRangeTo || registered <= paymentRangeTo);
+                }).sort((a, b) => paymentLocalCalendarDate(b.fecha_registro || b.fecha).localeCompare(paymentLocalCalendarDate(a.fecha_registro || a.fecha)) || Number(b.id) - Number(a.id))
+              : fetchedRows;
+            const primaryButton = panel.querySelector(
+              ".admin-section-title .admin-action",
+            );
+            if (primaryButton) {
+              primaryButton.dataset.crudCreate = id;
+              primaryButton.removeAttribute("data-action");
+              primaryButton.innerHTML = `<i class="fa-solid fa-plus me-1"></i>Registrar ${config.title}`;
+            }
+            const tools = panel.querySelector(".admin-tools");
+            if (id === "reservations") {
+              tools.innerHTML = `<button class="btn ${reservationFilter === "servicio" ? "btn-gold" : "btn-outline-gold"}" data-reservation-filter="servicio">Reservas de Servicios</button><button class="btn ${reservationFilter === "vestido" ? "btn-gold" : "btn-outline-gold"}" data-reservation-filter="vestido">Reservas de Vestidos</button><input class="form-control" type="search" placeholder="Buscar cliente por nombre" aria-label="Buscar reservas por nombre del cliente" data-reservation-search value="${escape(reservationSearch)}"><label class="reservation-date-filter">Desde<input class="form-control" type="date" aria-label="Fecha de reserva/evento desde" data-report-from value="${escape(reservationRangeFrom)}"></label><label class="reservation-date-filter">Hasta<input class="form-control" type="date" aria-label="Fecha de reserva/evento hasta" data-report-to value="${escape(reservationRangeTo)}"></label><button class="btn btn-outline-gold" data-generate-report>Generar informe PDF</button><button class="btn btn-outline-gold" data-crud-refresh="reservations"><i class="fa-solid fa-rotate"></i> Actualizar</button><button class="btn btn-outline-gold" data-calendar-open><i class="fa-regular fa-calendar me-1"></i>Ver calendario</button>`;
+              if (!isAdministrator()) tools.querySelectorAll("[data-report-from], [data-report-to], [data-generate-report]").forEach((control) => control.remove());
+              panel._rows = rows;
+              renderReservations(panel);
+            } else if (id === "payments") {
+              tools.innerHTML = `<div class="payment-report-filters"><label>Desde<input class="form-control" type="date" data-payment-from value="${escape(paymentRangeFrom)}"></label><label>Hasta<input class="form-control" type="date" data-payment-to value="${escape(paymentRangeTo)}"></label><button class="btn btn-outline-gold" data-generate-payment-report>Generar informe financiero PDF</button><button class="btn btn-outline-gold" data-crud-refresh="payments"><i class="fa-solid fa-rotate"></i> Actualizar</button></div>`;
+              panel._rows = rows;
+              renderTable(panel, id, rows, undefined, paymentRangeFrom || paymentRangeTo ? "No hay pagos registrados en el período seleccionado." : "Todavía no hay pagos registrados.");
+            } else {
+              tools.innerHTML = `<button class="btn btn-outline-gold" data-crud-refresh="${id}"><i class="fa-solid fa-rotate"></i> Actualizar</button>`;
+              panel._rows = rows;
+              renderTable(panel, id, rows, undefined, id === "consultations" ? "Todavía no hay consultas." : undefined);
+            }
+            if (["clients", "reservations", "services", "dresses"].includes(id)) await refreshDashboardMetrics();
+          } catch (error) {
+            showMessage(id, error.message, true);
+          }
+        };
+        const openForm = async (id, row = {}) => {
+          const config = definitions[id];
+          const existing = document.querySelector("#crudModal");
+          existing?.remove();
+          const fields = config.fields
+            .map(([key, text, type, required]) => {
+              const fieldText = id === "reservations" && row.tipo === "vestido"
+                ? ({ fecha: "Fecha de prueba", fecha_evento: "Fecha del evento", hora: "Hora de prueba" })[key] || text
+                : text;
+              const value = escape(row[key] ?? (key === "fecha_recepcion" && !row.id ? todayAsLocalDate() : type === "userrole" ? "empleado" : type === "select" ? 1 : type === "paymentstatus" ? "Pendiente" : type === "paymenttype" ? "Anticipo" : type === "reservationstatus" ? "pendiente" : ""));
+              const roleKnown = ["administrador","admin","administrator","empleado","employee","staff","cliente","usuario","user","customer","usuario/cliente","user/cliente"].includes(value.toLowerCase());
+              const isRequired = required || (id === "users" && key === "contrasena" && !row.id);
+              const input =
+                type === "textarea"
+                  ? `<textarea class="form-control" id="crud-${key}" ${isRequired ? "required" : ""}>${value}</textarea>`
+                  : type === "bookingtype"
+                    ? `<select class="form-select" id="crud-${key}" required><option value="servicio" ${value === "servicio" ? "selected" : ""}>Servicio</option><option value="vestido" ${value === "vestido" ? "selected" : ""}>Vestido</option></select>`
+                    : type === "userrole"
+                      ? `<select class="form-select" id="crud-${key}" required><option value="" disabled ${roleKnown ? "" : "selected"}>Selecciona un rol</option><option value="administrador" ${["administrador","admin","administrator"].includes(value.toLowerCase()) ? "selected" : ""}>Administrador</option><option value="empleado" ${["empleado","employee","staff"].includes(value.toLowerCase()) ? "selected" : ""}>Empleado</option><option value="cliente" ${["cliente","usuario","user","customer","usuario/cliente","user/cliente"].includes(value.toLowerCase()) ? "selected" : ""}>Usuario/cliente</option></select>`
+                    : type === "paymentstatus"
+                      ? `<select class="form-select" id="crud-${key}" required><option value="Pendiente" ${value === "Pendiente" ? "selected" : ""}>Pendiente</option><option value="Terminado" ${value === "Terminado" ? "selected" : ""}>Terminado</option></select>`
+                      : type === "paymenttype"
+                        ? `<select class="form-select" id="crud-${key}" required><option value="Anticipo" ${value === "Anticipo" ? "selected" : ""}>Anticipo</option><option value="Pago final" ${value === "Pago final" ? "selected" : ""}>Pago final</option></select>`
+                        : type === "paymentmethod"
+                          ? `<select class="form-select" id="crud-${key}" required><option value="Efectivo" ${value === "Efectivo" ? "selected" : ""}>Efectivo</option><option value="QR" ${value === "QR" ? "selected" : ""}>QR</option></select>`
+                      : type === "reservationstatus"
+                            ? `<select class="form-select" id="crud-${key}" required><option value="pendiente" ${value === "pendiente" ? "selected" : ""}>Pendiente</option><option value="confirmada" ${value === "confirmada" ? "selected" : ""}>Confirmada</option><option value="cancelada" ${value === "cancelada" ? "selected" : ""}>Cancelada</option></select>`
+                  : type === "timeslot"
+                              ? `<select class="form-select" id="crud-${key}" ${isRequired ? "required" : ""}><option value="">Selecciona fecha y servicio</option></select>`
+                    : type === "client"
+                      ? `<input class="form-control mb-2" id="crud-${key}-search" type="search" placeholder="Buscar cliente por nombre" autocomplete="off"><select class="form-select" id="crud-${key}" ${isRequired ? "required" : ""}><option value="">Cargando clientes…</option></select>`
+                  : type === "money"
+                    ? '<input class="form-control" id="crud-' + key + '" type="text" inputmode="decimal" pattern="\\d+(?:[.,]\\d{1,2})?" placeholder="Ej. 120 o 120,50" value="' + value + '" required aria-label="Monto en bolivianos"><span class="form-text">Importe en bolivianos (Bs).</span>'
+                  : type === "image"
+                    ? `<input class="form-control mb-2" id="crud-${key}" type="text" value="${value}" placeholder="imagenes/carpeta/fotografia.jpg" autocomplete="off"><label class="btn btn-outline-gold btn-sm" for="crud-${key}-file">Seleccionar imagen</label><input class="visually-hidden" id="crud-${key}-file" type="file" accept="image/jpeg,image/png,image/webp"><small class="form-text d-block">Elige un archivo o pega una ruta relativa existente dentro de imagenes/.</small><small class="image-field-status d-block" aria-live="polite"></small><img class="admin-image-preview mt-2" id="crud-${key}-preview" src="${value}" alt="Previsualización de imagen" ${value ? "" : "hidden"} onerror="this.hidden=true;this.previousElementSibling.textContent='No se encontró la imagen en esa ruta.'">`
+                  : type === "reservation"
+                    ? '<input class="form-control mb-2" id="crud-' + key + '-search" type="search" placeholder="Buscar por nombre, apellido o servicio" autocomplete="off"><select class="form-select" id="crud-' + key + '" ' + (isRequired ? "required" : "") + '><option value="">Cargando reservas…</option></select>'
+                  : ["service", "dress", "branch"].includes(type)
+                      ? `<select class="form-select" id="crud-${key}" ${isRequired ? "required" : ""}><option value="">Cargando opciones…</option></select>`
+                  : type === "select"
+                    ? `<select class="form-select" id="crud-${key}"><option value="1" ${Number(value) ? "selected" : ""}>Sí</option><option value="0" ${!Number(value) ? "selected" : ""}>No</option></select>`
+                    : `<input class="form-control" id="crud-${key}" type="${type}" value="${value}" ${isRequired ? "required" : ""}>`;
+              const details = ["client", "service", "dress"].includes(type) ? `<small class="form-text d-block mt-1" id="crud-${key}-details"></small>` : "";
+              return `<div class="col-md-6" data-field="${key}"><label class="form-label" for="crud-${key}">${fieldText}</label>${input}${details}</div>`;
+            })
+            .join("");
+          document.body.insertAdjacentHTML(
+            "beforeend",
+            `<div class="modal fade" id="crudModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-scrollable"><form class="modal-content" id="crudForm"><div class="modal-header"><h5 class="modal-title">${row.id ? "Editar" : "Registrar"} ${config.title}</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body">${id === "reservations" && row.id ? `<p class="small mb-3">Código de reserva: <strong>${escape(row.codigo || `RES-${String(row.id).padStart(4, "0")}`)}</strong>${row.tipo === "vestido" ? ` · Total: <strong>${row.precio_reserva == null ? "—" : `Bs ${Number(row.precio_reserva).toFixed(2)}`}</strong> · Pago: <strong>Bs ${Number(row.pago_total || 0).toFixed(2)}</strong> · Estado del pago: <strong>${escape(row.pago_estado || "Sin pagos")}</strong>` : ""}</p>` : ""}<div class="row g-3">${fields}</div>${id === "dresses" ? `<section class="mt-4" data-field="galeria"><label class="form-label" for="crud-galeria">Fotografías adicionales</label><input class="form-control" id="crud-galeria" type="file" accept="image/jpeg,image/png,image/webp" multiple><small class="form-text d-block">Las imágenes nuevas se agregarán a la galería de este vestido.</small><div class="admin-gallery-preview mt-3">${(row.imagenes || []).map((image) => `<div class="admin-gallery-item" data-gallery-item="${Number(image.id)}"><img src="${escape(image.ruta)}" alt="Fotografía adicional"><button class="btn btn-sm btn-outline-danger" type="button" data-gallery-delete="${Number(image.id)}">Quitar</button></div>`).join("")}</div><div class="admin-gallery-new mt-2"></div></section>` : ""}<p class="text-danger small mt-3 mb-0" id="crudError"></p></div><div class="modal-footer"><button class="btn btn-outline-gold" type="button" data-bs-dismiss="modal">Cancelar</button><button class="btn btn-gold" type="submit">${row.id ? "Guardar cambios" : "Guardar"}</button></div></form></div></div>`,
+          );
+          const modalElement = document.querySelector("#crudModal");
+          const imageFile = modalElement.querySelector(`#crud-imagen-file`);
+          const imagePath = modalElement.querySelector("#crud-imagen");
+          const imagePreview = modalElement.querySelector("#crud-imagen-preview");
+          if (imageFile && imagePath && imagePreview) {
+            const status = imagePreview.previousElementSibling;
+            imagePath.addEventListener("input", () => {
+              imageFile.value = "";
+              const route = imagePath.value.trim().replace(/\\/g, "/");
+              const validPath = !route || (route.startsWith("imagenes/") && !route.split("/").some((part) => part === ".." || !part) && !/[?#:%]/.test(route) && /\.(?:jpe?g|png|webp|gif)$/i.test(route));
+              imagePreview.hidden = !route || !validPath;
+              if (validPath && route) imagePreview.src = route;
+              if (status) status.textContent = !route ? "" : validPath ? "Comprobando ruta…" : "La ruta debe ser relativa y estar dentro de imagenes/.";
+            });
+            imagePreview.addEventListener("load", () => { if (status) status.textContent = "Imagen lista."; });
+            imageFile.addEventListener("change", () => {
+              const file = imageFile.files[0];
+              if (!file) return;
+              if (file.size > 5 * 1024 * 1024) {
+                imageFile.value = "";
+                if (status) status.textContent = "La imagen debe pesar como máximo 5 MB.";
+                return;
+              }
+              imagePreview.src = URL.createObjectURL(file);
+              imagePreview.hidden = false;
+              if (status) status.textContent = file.name;
+            });
+          }
+          const galleryInput = modalElement.querySelector("#crud-galeria");
+          galleryInput?.addEventListener("change", () => {
+            const preview = modalElement.querySelector(".admin-gallery-new");
+            preview.innerHTML = "";
+            [...galleryInput.files].forEach((file) => {
+              if (file.size > 5 * 1024 * 1024) {
+                modalElement.querySelector("#crudError").textContent = `${file.name}: supera el límite de 5 MB.`;
+                return;
+              }
+              const image = document.createElement("img");
+              image.src = URL.createObjectURL(file);
+              image.alt = file.name;
+              image.className = "admin-image-preview";
+              preview.append(image);
+            });
+          });
+          modalElement.querySelectorAll("[data-gallery-delete]").forEach((button) => button.addEventListener("click", async () => {
+            if (!row.id || !confirm("¿Quitar esta fotografía adicional del vestido?")) return;
+            try {
+              await api(`vestidos/${row.id}/imagenes/${button.dataset.galleryDelete}`, { method: "DELETE" });
+              button.closest("[data-gallery-item]").remove();
+            } catch (error) {
+              modalElement.querySelector("#crudError").textContent = error.message;
+            }
+          }));
+          if (id === "payments") {
+            const status = modalElement.querySelector("#crud-estado");
+            const receiptDate = modalElement.querySelector("#crud-fecha_recepcion");
+            const updateReceiptDateRequirement = () => {
+              receiptDate.required = status.value === "Terminado";
+              receiptDate.setAttribute("aria-required", String(receiptDate.required));
+              receiptDate.closest("[data-field]").querySelector(".form-text")?.remove();
+              if (receiptDate.required) {
+                const note = document.createElement("small");
+                note.className = "form-text";
+                note.textContent = "Registra el día real en que recibiste el importe.";
+                receiptDate.after(note);
+              }
+            };
+            status.addEventListener("change", updateReceiptDateRequirement);
+            updateReceiptDateRequirement();
+          }
+          for (const [key, , type] of config.fields) {
+            if (!["client", "service", "dress", "reservation", "branch"].includes(type)) continue;
+            const select = modalElement.querySelector(`#crud-${key}`);
+            const source = { client: "clientes", service: "servicios?activos=1", dress: "vestidos", reservation: "reservas", branch: "opciones/sucursales" }[type];
+            const items = await api(source);
+            const prompt = { client: "Selecciona un cliente", service: "Selecciona un servicio", dress: "Selecciona un vestido", reservation: "Selecciona una reserva", branch: "Selecciona una sucursal" }[type];
+            const optionLabel = (item) => type === "branch" ? item : type === "reservation"
+              ? `${item.codigo} · ${item.cliente} · ${item.tipo === "vestido" ? item.vestido : item.servicio} · ${String(item.fecha_evento || item.fecha || "").slice(0, 10)} ${item.hora || ""} · Bs ${Number(item.precio_reserva || 0).toFixed(2)}`
+              : type === "dress"
+                ? `${item.nombre} · ${item.color || "Color s/d"} · Talla ${item.talla || "s/d"} · Bs ${Number(item.precio || 0).toFixed(2)}${Number(item.disponible) ? "" : " · No disponible"}`
+                : type === "service"
+                  ? `${item.nombre} · Bs ${Number(item.precio || 0).toFixed(2)}`
+                  : `${item.nombre} · ${item.telefono || "Sin teléfono"} · #${item.id}`;
+            const optionValue = (item) => type === "branch" ? item : item.id;
+            select.innerHTML = `<option value="">${prompt}</option>` + items.map(item => {
+              const balance = Math.max(0, Number(item.precio_reserva || 0) - Number(item.pago_total || 0));
+              const attrs = type === "reservation" ? ` data-price="${Number(item.precio_reserva || 0)}" data-balance="${balance}"` : "";
+              return `<option value="${escape(optionValue(item))}"${attrs}>${escape(optionLabel(item))}</option>`;
+            }).join("");
+            select._records = items;
+            select.value = row[key] ?? "";
+            if (type === "reservation") {
+              const search = modalElement.querySelector(`#crud-${key}-search`);
+              const renderReservationOptions = () => {
+                const query = normalizeSearchText(search.value.trim());
+                const selected = select.value;
+                const matching = items.filter((item) => normalizeSearchText([item.cliente,item.tipo,item.servicio,item.vestido,item.codigo,item.fecha_evento,item.fecha,item.hora].filter(Boolean).join(" ")).includes(query));
+                select.innerHTML = '<option value="">' + (query && !matching.length ? "No se encontraron reservas" : "Selecciona una reserva") + '</option>' + matching.map((item) => {
+                  const balance = Math.max(0, Number(item.precio_reserva || 0) - Number(item.pago_total || 0));
+                  return '<option value="' + escape(item.id) + '" data-price="' + Number(item.precio_reserva || 0) + '" data-balance="' + balance + '">' + escape(optionLabel(item)) + '</option>';
+                }).join("");
+                select.value = matching.some((item) => String(item.id) === String(selected)) ? selected : "";
+              };
+              search.addEventListener("input", renderReservationOptions);
+              select.addEventListener("change", () => { if (select.selectedOptions[0]?.value) search.value = select.selectedOptions[0].textContent; });
+              const selectedReservation = items.find((item) => String(item.id) === String(row.reserva_id || ""));
+              if (selectedReservation) search.value = optionLabel(selectedReservation);
+              renderReservationOptions();
+            }
+            if (type === "client") {
+              const search = modalElement.querySelector(`#crud-${key}-search`);
+              const renderClientOptions = () => {
+                const query = search.value.trim().toLocaleLowerCase("es");
+                const matching = items.filter((item) => String(item.nombre || "").toLocaleLowerCase("es").includes(query));
+                const selected = select.value;
+                select.innerHTML = `<option value="">${query ? "Selecciona el cliente" : prompt}</option>` + matching.map((item) => `<option value="${escape(item.id)}">${escape(optionLabel(item))}</option>`).join("");
+                select.value = matching.some((item) => String(item.id) === String(selected)) ? selected : "";
+              };
+              search.addEventListener("input", renderClientOptions);
+              select.addEventListener("change", () => {
+                const selectedClient = items.find((item) => String(item.id) === select.value);
+                if (selectedClient) search.value = selectedClient.nombre;
+              });
+              const selectedClient = items.find((item) => String(item.id) === select.value);
+              if (selectedClient) search.value = selectedClient.nombre;
+              renderClientOptions();
+            }
+            if (id === "reservations" && type === "branch") {
+              select._serviceBranches = items;
+              if (modalElement.querySelector("#crud-tipo")?.value === "vestido") {
+                select.innerHTML = '<option value="Boutique Lía Vincenzo">Boutique Lía Vincenzo</option>';
+                select.value = "Boutique Lía Vincenzo";
+              }
+            }
+            if (["client", "service", "dress"].includes(type)) {
+              const details = modalElement.querySelector(`#crud-${key}-details`);
+              const updateDetails = () => {
+                const item = items.find((entry) => String(entry.id) === select.value);
+                if (!item) { details.textContent = ""; return; }
+                details.textContent = type === "client"
+                  ? [item.telefono, item.correo, item.fecha_nacimiento].filter(Boolean).join(" · ")
+                  : type === "service"
+                    ? `Precio catálogo: Bs ${Number(item.precio || 0).toFixed(2)}${item.duracion_minutos ? ` · ${item.duracion_minutos} min` : ""}`
+                    : `Talla ${item.talla || "s/d"} · ${item.color || "Color s/d"} · Bs ${Number(item.precio || 0).toFixed(2)} · ${Number(item.disponible) ? "Habilitado" : "No disponible"}`;
+              };
+              select.addEventListener("change", updateDetails);
+              updateDetails();
+            }
+          }
+          if (id === "reservations") {
+            const typeSelect = modalElement.querySelector("#crud-tipo");
+            const serviceSelect = modalElement.querySelector("#crud-servicio_id");
+            const dressSelect = modalElement.querySelector("#crud-vestido_id");
+            const dateSelect = modalElement.querySelector("#crud-fecha");
+            const eventDateSelect = modalElement.querySelector("#crud-fecha_evento");
+            const timeSelect = modalElement.querySelector("#crud-hora");
+            const branchSelect = modalElement.querySelector("#crud-sucursal");
+            const statusSelect = modalElement.querySelector("#crud-estado");
+            const serviceField = serviceSelect.closest("[data-field]");
+            const dressField = dressSelect.closest("[data-field]");
+            const eventDateField = eventDateSelect.closest("[data-field]");
+            const availability = document.createElement("p");
+            availability.className = "small mt-2 mb-0";
+            availability.id = "crud-availability";
+            modalElement.querySelector("#crudError").before(availability);
+            const saveButton = modalElement.querySelector('button[type="submit"]');
+            let checkSequence = 0;
+            const refreshServiceTimes = () => {
+              if (typeSelect.value !== "servicio") return;
+              const selectedService = (serviceSelect._records || []).find((item) => String(item.id) === serviceSelect.value);
+              const date = dateSelect.value;
+              const previous = timeSelect.value || String(row.hora || "").slice(0, 5);
+              timeSelect.innerHTML = '<option value="">Selecciona una hora disponible</option>';
+              if (!selectedService || !date) {
+                timeSelect.innerHTML = '<option value="">Selecciona fecha y servicio</option>';
+                return;
+              }
+              const [year, month, day] = date.split("-").map(Number);
+              const sunday = new Date(Date.UTC(year, month - 1, day)).getUTCDay() === 0;
+              const closing = (sunday ? 17 : 21) * 60;
+              const duration = Math.max(1, Number(selectedService.duracion_minutos) || 60);
+              for (let start = 9 * 60; start + duration <= closing; start += 60) {
+                const hour = `${String(Math.floor(start / 60)).padStart(2, "0")}:${String(start % 60).padStart(2, "0")}`;
+                timeSelect.add(new Option(hour, hour, false, hour === previous));
+              }
+            };
+            const checkSelectedAvailability = async () => {
+              const sequence = ++checkSequence;
+              const isDress = typeSelect.value === "vestido";
+              if (!typeSelect.value || !dateSelect.value || (isDress ? !dressSelect.value : !serviceSelect.value || !timeSelect.value)) {
+                availability.textContent = "Selecciona tipo, recurso, fecha y horario para comprobar disponibilidad.";
+                availability.className = "small mt-2 mb-0 text-body-secondary";
+                saveButton.disabled = false;
+                return;
+              }
+              if (statusSelect.value === "cancelada") {
+                availability.textContent = "La reserva quedará cancelada y no bloqueará disponibilidad.";
+                availability.className = "small mt-2 mb-0 text-body-secondary";
+                saveButton.disabled = false;
+                return;
+              }
+              const params = new URLSearchParams({
+                tipo: typeSelect.value,
+                fecha: dateSelect.value,
+                fecha_evento: eventDateSelect.value,
+                hora: timeSelect.value,
+                sucursal: modalElement.querySelector("#crud-sucursal").value,
+                servicio_id: serviceSelect.value,
+                vestido_id: dressSelect.value,
+              });
+              if (row.id) params.set("excluir", row.id);
+              availability.textContent = "Comprobando disponibilidad…";
+              availability.className = "small mt-2 mb-0 text-body-secondary";
+              saveButton.disabled = true;
+              try {
+                const result = await api(`reservas/disponibilidad?${params}`);
+                if (sequence !== checkSequence) return;
+                availability.textContent = result.mensaje;
+                availability.className = `small mt-2 mb-0 ${result.disponible ? "text-success" : "text-danger"}`;
+                saveButton.disabled = !result.disponible;
+              } catch (error) {
+                if (sequence !== checkSequence) return;
+                availability.textContent = error.message;
+                availability.className = "small mt-2 mb-0 text-danger";
+                saveButton.disabled = true;
+              }
+            };
+            const syncBookingType = (clearInactive) => {
+              const isDress = typeSelect.value === "vestido";
+              serviceSelect.required = !isDress;
+              dressSelect.required = isDress;
+              timeSelect.required = !isDress;
+              serviceField.hidden = isDress;
+              dressField.hidden = !isDress;
+              eventDateField.hidden = !isDress;
+              if (isDress) {
+                branchSelect.innerHTML = '<option value="Boutique Lía Vincenzo">Boutique Lía Vincenzo</option>';
+                branchSelect.value = "Boutique Lía Vincenzo";
+              } else {
+                const branches = branchSelect._serviceBranches || [];
+                const currentBranch = branchSelect.value;
+                branchSelect.innerHTML = '<option value="">Selecciona una sucursal</option>' + branches.map((branch) => `<option value="${escape(branch)}">${escape(branch)}</option>`).join("");
+                branchSelect.value = branches.includes(currentBranch) ? currentBranch : "";
+              }
+              if (clearInactive) (isDress ? serviceSelect : dressSelect).value = "";
+              refreshServiceTimes();
+              checkSelectedAvailability();
+            };
+            typeSelect.addEventListener("change", () => syncBookingType(true));
+            [modalElement.querySelector("#crud-cliente_id"),dressSelect,eventDateSelect,timeSelect,statusSelect,modalElement.querySelector("#crud-sucursal")].forEach((control) => control.addEventListener("change", checkSelectedAvailability));
+            [serviceSelect,dateSelect].forEach((control) => control.addEventListener("change", () => {
+              refreshServiceTimes();
+              checkSelectedAvailability();
+            }));
+            syncBookingType(false);
+          }
+          if (id === "payments") {
+            const reservationSelect = modalElement.querySelector("#crud-reserva_id");
+            const amountInput = modalElement.querySelector("#crud-monto");
+            const hint = document.createElement("small");
+            hint.className = "form-text d-block mt-1";
+            hint.textContent = "";
+            amountInput.after(hint);
+            reservationSelect.addEventListener("change", () => {
+              const option = reservationSelect.selectedOptions[0];
+              if (option?.value) amountInput.value = option.dataset.balance || option.dataset.price || "0";
+            });
+          }
+          const closeFallbackModal = () => {
+            modalElement.classList.remove("show");
+            modalElement.style.display = "none";
+            document.body.classList.remove("modal-open");
+            modalElement.remove();
+          };
+          const modal = window.bootstrap?.Modal
+            ? new window.bootstrap.Modal(modalElement)
+            : { hide: closeFallbackModal };
+          if (window.bootstrap?.Modal) {
+            modalElement.addEventListener("hidden.bs.modal", () =>
+              modalElement.remove(),
+            );
+            modal.show();
+          } else {
+            modalElement.classList.add("show");
+            modalElement.style.display = "block";
+            modalElement.setAttribute("aria-modal", "true");
+            document.body.classList.add("modal-open");
+            modalElement
+              .querySelectorAll('[data-bs-dismiss="modal"], .btn-close')
+              .forEach((button) =>
+                button.addEventListener("click", closeFallbackModal),
+              );
+          }
+          document
+            .querySelector("#crudForm")
+            .addEventListener("submit", async (event) => {
+              event.preventDefault();
+              const body = Object.fromEntries(
+                config.fields.map(([key, , type]) => [
+                  key,
+                  type === "money"
+                    ? Number(document.querySelector(`#crud-${key}`).value.trim().replace(",", "."))
+                    : document.querySelector(`#crud-${key}`).value,
+                ]),
+              );
+              try {
+                const saved = await api(`${config.api}${row.id ? `/${row.id}` : ""}`, {
+                  method: row.id ? "PUT" : "POST",
+                  body: JSON.stringify(body),
+                });
+                const recordId = row.id || saved.id;
+                const toDataUrl = (file) => new Promise((resolve, reject) => {
+                  const reader = new FileReader();
+                  reader.onload = () => resolve(reader.result);
+                  reader.onerror = () => reject(new Error(`No se pudo leer ${file.name}.`));
+                  reader.readAsDataURL(file);
+                });
+                const selectedMainImage = imageFile?.files?.[0];
+                if (selectedMainImage) {
+                  const endpoint = id === "services" ? `servicios/${recordId}/imagen` : `vestidos/${recordId}/imagenes`;
+                  await api(endpoint, {
+                    method: "POST",
+                    body: JSON.stringify({ imagenBase64: await toDataUrl(selectedMainImage), principal: id === "dresses" }),
+                  });
+                }
+                if (id === "dresses" && galleryInput?.files?.length) {
+                  for (const file of galleryInput.files) {
+                    await api(`vestidos/${recordId}/imagenes`, {
+                      method: "POST",
+                      body: JSON.stringify({ imagenBase64: await toDataUrl(file), principal: false }),
+                    });
+                  }
+                }
+                modal.hide();
+                if (id === "reservations" && !row.id) {
+                  reservationSearch = "";
+                  reservationFilter = body.tipo;
+                }
+                await draw(id);
+                showMessage(
+                  id,
+                  id === "reservations"
+                    ? row.id ? "Reserva actualizada correctamente." : `Reserva registrada correctamente. Código: ${saved.codigo || `RES-${String(row.id).padStart(4, "0")}`}.`
+                    : `${label(config.title)} guardado correctamente.`,
+                );
+              } catch (error) {
+                document.querySelector("#crudError").textContent =
+                  error.message;
+              }
+            });
+        };
+        content.addEventListener("click", async (event) => {
+          const calendarOpen = event.target.closest("[data-calendar-open]");
+          const calendarBack = event.target.closest("[data-calendar-back]");
+          if (calendarOpen || calendarBack) {
+            const panel = content.querySelector("#reservations");
+            const calendar = content.querySelector("#reservationCalendar");
+            panel.querySelector(".admin-tools").hidden = Boolean(calendarOpen);
+            panel.querySelector(".admin-table-wrap")?.toggleAttribute("hidden", Boolean(calendarOpen));
+            panel.querySelector(".admin-feedback").hidden = Boolean(calendarOpen);
+            calendar.hidden = !calendarOpen;
+            if (calendarOpen) {
+              const dayPicker = calendar.querySelector("[data-calendar-day-select]");
+              if (!dayPicker.value) dayPicker.value = todayAsLocalDate();
+              await renderCalendar();
+            }
+            return;
+          }
+          const calendarStep = event.target.closest("[data-calendar-step]");
+          const calendarToday = event.target.closest("[data-calendar-today]");
+          const calendarView = event.target.closest("[data-calendar-view]");
+          const calendarEvent = event.target.closest("[data-calendar-reservation]");
+          const calendarDay = event.target.closest("[data-calendar-day]");
+          const calendarMore = event.target.closest("[data-calendar-more]");
+          if (calendarMore) {
+            const date = calendarMore.dataset.calendarMore;
+            const rows = calendarVisibleRows.filter((item) => item.fecha_calendario === date);
+            content.querySelector("#calendarDetails").innerHTML = `<strong>${escape(calendarDateText(calendarDate(date)))}</strong><br>${rows.map((item) => `${escape(item.hora || "Sin hora")} · ${escape(item.codigo)} · ${escape(item.cliente)} · ${escape(item.tipo === "vestido" ? item.vestido : item.servicio)} · ${escape(item.estado || "—")}`).join("<br>")}`;
+            return;
+          }
+          if (calendarStep || calendarToday || calendarView) {
+            if (calendarStep) {
+              if (calendarMode === "month") {
+                const dayOfMonth = calendarCursor.getDate();
+                calendarCursor.setDate(1);
+                calendarCursor.setMonth(calendarCursor.getMonth() + Number(calendarStep.dataset.calendarStep));
+                const lastDay = new Date(calendarCursor.getFullYear(), calendarCursor.getMonth() + 1, 0).getDate();
+                calendarCursor.setDate(Math.min(dayOfMonth, lastDay));
+              }
+              else calendarCursor.setDate(calendarCursor.getDate() + 7 * Number(calendarStep.dataset.calendarStep));
+            }
+            if (calendarToday) calendarCursor = new Date();
+            if (calendarView) calendarMode = calendarView.dataset.calendarView;
+            const dayPicker = content.querySelector("[data-calendar-day-select]");
+            if (dayPicker) dayPicker.value = isoCalendarDate(calendarCursor);
+            await renderCalendar();
+            return;
+          }
+          if (calendarDay) {
+            const date = calendarDay.dataset.calendarDay;
+            const dayPicker = content.querySelector("[data-calendar-day-select]");
+            if (dayPicker) dayPicker.value = date;
+            const rows = calendarVisibleRows.filter((item) => item.fecha_calendario === date);
+            content.querySelector("#calendarDetails").textContent = `${calendarDateText(calendarDate(date))}: ${rows.length} reserva${rows.length === 1 ? "" : "s"}. ${rows.length ? "Selecciona una reserva para consultar el detalle." : "No hay reservas registradas para esta fecha."}`;
+            return;
+          }
+          if (calendarEvent) {
+            const item = calendarRows.find((row) => String(row.id) === calendarEvent.dataset.calendarReservation);
+            if (!item) return;
+            const isDress = item.tipo === "vestido";
+            const duration = Math.max(1, Number(item.duracion_minutos) || 60);
+            const start = Number(String(item.hora || "00:00").slice(0, 2)) * 60 + Number(String(item.hora || "00:00").slice(3, 5));
+            const end = `${String(Math.floor((start + duration) / 60) % 24).padStart(2, "0")}:${String((start + duration) % 60).padStart(2, "0")}`;
+            content.querySelector("#calendarDetails").innerHTML = `<strong>${escape(item.codigo)} · ${escape(item.cliente)}</strong><br>${escape(isDress ? "Alquiler de vestido" : "Servicio")}: ${escape(isDress ? item.vestido : item.servicio)}<br>Fecha: ${escape(calendarDateText(calendarDate(item.fecha_calendario)))} · Hora: ${escape(item.hora || "Sin hora")}${!isDress && item.hora ? `–${end} (${duration} min)` : ""}<br>Sucursal: ${escape(item.sucursal || "—")} · Estado: ${escape(item.estado || "—")}<br>Teléfono: ${escape(item.cliente_telefono || "—")} · Correo: ${escape(item.cliente_correo || "—")}${item.notas ? `<br>Notas: ${escape(item.notas)}` : ""}`;
+            return;
+          }
+          const create = event.target.closest("[data-crud-create]");
+          const refresh = event.target.closest("[data-crud-refresh]");
+          const reportButton = event.target.closest("[data-generate-report]");
+          const paymentReportButton = event.target.closest("[data-generate-payment-report]");
+          const edit = event.target.closest("[data-crud-edit]");
+          const remove = event.target.closest("[data-crud-delete]");
+          const filter = event.target.closest("[data-reservation-filter]");
+          if (reportButton) {
+            const from = content.querySelector("[data-report-from]").value;
+            const to = content.querySelector("[data-report-to]").value;
+            if (from && to && from > to) {
+              showMessage("reservations", "La fecha inicial debe ser anterior a la fecha final.", true);
+              return;
+            }
+            const matchingReservations = (content.querySelector("#reservations")._rows || []).filter((row) => {
+              const date = String(row.fecha_evento || row.fecha || "").slice(0, 10);
+              return (!from || date >= from) && (!to || date <= to);
+            });
+            if (!matchingReservations.length) {
+              showMessage("reservations", "No hay reservas en el periodo seleccionado.", true);
+              return;
+            }
+            const reportWindow = window.open("about:blank", "_blank");
+            if (!reportWindow) {
+              showMessage("reservations", "Permite abrir la ventana del informe para imprimirlo como PDF.", true);
+              return;
+            }
+            try {
+              const query = new URLSearchParams({ desde: from, hasta: to });
+              const report = await api(`reportes/reservas?${query}`);
+              reportWindow.addEventListener("load", () => setTimeout(() => reportWindow.print(), 250), { once: true });
+              reportWindow.document.open();
+              reportWindow.document.write(reportDocument(report));
+              reportWindow.document.close();
+            } catch (error) {
+              reportWindow.close();
+              showMessage("reservations", error.message, true);
+            }
+          }
+          if (paymentReportButton) {
+            const from = content.querySelector("[data-payment-from]").value;
+            const to = content.querySelector("[data-payment-to]").value;
+            if (from && to && from > to) {
+              showMessage("payments", "La fecha inicial no puede ser posterior a la fecha final.", true);
+              return;
+            }
+            const reportWindow = window.open("about:blank", "_blank");
+            if (!reportWindow) {
+              showMessage("payments", "Permite abrir la ventana para imprimir el informe PDF.", true);
+              return;
+            }
+            try {
+              paymentRangeFrom = from;
+              paymentRangeTo = to;
+              await draw("payments");
+              const rows = content.querySelector("#payments")._rows || [];
+              const isCompleted = (row) => ["terminado", "terminada", "completado", "completada"].includes(String(row.estado || "").toLocaleLowerCase("es"));
+              const report = {
+                desde: from || null,
+                hasta: to || null,
+                rows: rows.map((row) => ({ ...row, fecha: row.fecha_registro || row.fecha, codigo_reserva: row.codigo_reserva || `RES-${String(row.reserva_id).padStart(4, "0")}` })),
+                summary: {
+                  pagos: rows.length,
+                  recibidos: rows.filter(isCompleted).length,
+                  pendientes: rows.filter((row) => String(row.estado || "").toLocaleLowerCase("es") === "pendiente").length,
+                  monto_total: rows.reduce((sum, row) => sum + (Number(row.monto) || 0), 0),
+                },
+              };
+              reportWindow.addEventListener("load", () => setTimeout(() => reportWindow.print(), 250), { once: true });
+              reportWindow.document.open();
+              reportWindow.document.write(paymentReportDocument(report));
+              reportWindow.document.close();
+            } catch (error) {
+              reportWindow.close();
+              showMessage("payments", error.message, true);
+            }
+            return;
+          }
+          if (filter) {
+            reservationFilter = filter.dataset.reservationFilter;
+            reservationDateFilter = "";
+            reservationSearch = "";
+            const panel = content.querySelector("#reservations");
+            const search = panel.querySelector("[data-reservation-search]");
+            if (search) search.value = "";
+            panel.querySelectorAll("[data-reservation-filter]").forEach((button) => {
+              const selected = button.dataset.reservationFilter === reservationFilter;
+              button.classList.toggle("btn-gold", selected);
+              button.classList.toggle("btn-outline-gold", !selected);
+            });
+            renderReservations(panel);
+          }
+          if (create) openForm(create.dataset.crudCreate);
+          if (refresh) draw(refresh.dataset.crudRefresh);
+          if (edit) {
+            const id = edit.dataset.crudEdit;
+            const row = content.querySelector(`#${id}`)._rows.find((item) => String(item.id) === edit.dataset.id);
+            if (id === "payments" && !paymentIsPending(row)) {
+              showMessage(id, "Los pagos terminados están protegidos y no se pueden editar.", true);
+              return;
+            }
+            openForm(id, row);
+          }
+          if (remove) {
+            const id = remove.dataset.crudDelete;
+            if (id === "payments") {
+              const payment = content.querySelector(`#${id}`)._rows.find((item) => String(item.id) === remove.dataset.id);
+              if (!paymentIsPending(payment)) {
+                showMessage(id, "Los pagos terminados están protegidos y no se pueden eliminar.", true);
+                return;
+              }
+            }
+            if (
+              !confirm(
+                id === "clients"
+                  ? "¿Estás seguro de que deseas eliminar este cliente? Si conserva reservas o cupones, se desactivará para proteger el historial."
+                  : "¿Eliminar este registro? Esta acción no se puede deshacer.",
+              )
+            )
+              return;
+            try {
+              const result = await api(`${definitions[id].api}/${remove.dataset.id}`, {
+                method: "DELETE",
+              });
+              await draw(id);
+              showMessage(id, result.mensaje || "Registro eliminado.");
+            } catch (error) {
+              showMessage(id, error.message, true);
+            }
+          }
+        });
+        content.addEventListener("change", (event) => {
+          if (event.target.matches("[data-calendar-day-select]")) {
+            if (event.target.value) calendarCursor = calendarDate(event.target.value);
+            renderCalendar();
+            return;
+          }
+          if (event.target.matches("[data-calendar-type], [data-calendar-status]")) {
+            renderCalendar();
+            return;
+          }
+          if (event.target.matches("[data-payment-from], [data-payment-to]")) {
+            const from = content.querySelector("[data-payment-from]").value;
+            const to = content.querySelector("[data-payment-to]").value;
+            if (from && to && from > to) {
+              showMessage("payments", "La fecha inicial no puede ser posterior a la fecha final.", true);
+              return;
+            }
+            paymentRangeFrom = from;
+            paymentRangeTo = to;
+            draw("payments");
+            return;
+          }
+          const input = event.target.closest("[data-report-from], [data-report-to]");
+          if (!input) return;
+          const panel = content.querySelector("#reservations");
+          const from = panel.querySelector("[data-report-from]").value;
+          const to = panel.querySelector("[data-report-to]").value;
+          if (from && to && from > to) {
+            showMessage("reservations", "La fecha inicial no puede ser posterior a la fecha final.", true);
+            return;
+          }
+          reservationRangeFrom = from;
+          reservationRangeTo = to;
+          reservationDateFilter = "";
+          renderReservations(panel);
+          const visible = (panel._rows || []).some((row) => {
+            const date = String(row.fecha_evento || row.fecha || "").slice(0, 10);
+            return (!from || date >= from) && (!to || date <= to);
+          });
+          showMessage("reservations", visible ? "Reservas filtradas por fecha de reserva/evento." : "No hay reservas en el periodo seleccionado.", !visible);
+        });
+        content.addEventListener("input", (event) => {
+          if (!event.target.matches("[data-reservation-search]")) return;
+          reservationSearch = event.target.value;
+          if (reservationSearch) {
+            reservationFilter = "all";
+            reservationDateFilter = "";
+            content.querySelectorAll("[data-reservation-filter]").forEach((button) => {
+              button.classList.remove("btn-gold");
+              button.classList.add("btn-outline-gold");
+            });
+          }
+          renderReservations(content.querySelector("#reservations"));
+        });
+        window.addEventListener("admin-section", (event) => {
+          if (event.detail?.id !== "reservations") return;
+          const panel = content.querySelector("#reservations");
+          panel.querySelector(".admin-tools").hidden = false;
+          panel.querySelector(".admin-table-wrap")?.removeAttribute("hidden");
+          panel.querySelector(".admin-feedback").hidden = false;
+          panel.querySelector("#reservationCalendar").hidden = true;
+        });
+          window.addEventListener("admin-authenticated", () =>
+          {
+            const isEmployee = window.ilSaloneAdminRole === "empleado";
+            document.querySelectorAll("[data-admin-only]").forEach((element) => {
+              element.hidden = isEmployee;
+            });
+            content.querySelectorAll('[data-crud-create="clients"]').forEach((element) => {
+              element.hidden = isEmployee;
+            });
+            if (isEmployee && ["payments", "users"].includes(location.hash.slice(1))) {
+              history.replaceState(null, "", "#dashboard");
+            }
+            refreshDashboardMetrics().catch((error) => showMessage("clients", error.message, true));
+          },
+        );
+        window.addEventListener("admin-reservation-view", (event) => {
+          reservationFilter = event.detail.filter === "servicio" || event.detail.filter === "vestido"
+            ? event.detail.filter
+            : "all";
+          reservationDateFilter = event.detail.date === "today" ? todayAsLocalDate() : "";
+          reservationSearch = "";
+          const panel = content.querySelector("#reservations");
+          const search = panel.querySelector("[data-reservation-search]");
+          if (search) search.value = "";
+          if (panel._rows) renderReservations(panel);
+        });
+        window.addEventListener("admin-section", (event) => {
+          activePanel = event.detail.id;
+          if (activePanel === "dashboard") refreshDashboardMetrics().catch((error) => console.error(error));
+          draw(activePanel);
+        });
+        window.addEventListener("focus", () => {
+          if (activePanel === "dashboard") refreshDashboardMetrics().catch((error) => console.error(error));
+        });
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden && activePanel === "dashboard")
+            refreshDashboardMetrics().catch((error) => console.error(error));
+        });
+        window.setInterval(() => {
+          if (!document.hidden && window.ilSaloneAdminToken)
+            refreshDashboardMetrics().catch((error) => console.error(error));
+        }, 30000);
+      })();
+    </script>
+  </body>
+</html>

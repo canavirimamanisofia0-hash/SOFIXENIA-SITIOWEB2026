@@ -1,0 +1,17 @@
+{
+  "name": "il-salone-lia-vincenzo",
+  "version": "1.0.0",
+  "description": "Sistema de gestión y reservas de Il Salone Lia Vincenzo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "cumpleanos": "node cumpleanos.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.7"
+  }
+}

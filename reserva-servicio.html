@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reservar servicio | Il Salone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css?v=20261019-responsive-services-8" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html"
+          >IL SALONE<small>LIA VINCENZO</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"> </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+          <ul class="navbar-nav align-items-lg-center">
+            <li>
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li>
+              <a class="nav-link" href="servicios.html">Servicios</a>
+            </li>
+            <li>
+              <a class="nav-link" href="catalogo.html">Vestidos</a>
+            </li>
+            <li>
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html"
+                ><i class="fa-solid fa-user-lock me-1"></i>Iniciar sesión</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="text-center mb-5">
+              <span class="eyebrow">Agenda tu momento</span>
+              <h1 class="section-title mt-2">Reserva un servicio</h1>
+              <p>
+                Completa tus datos. Confirmaremos tu cita de manera inmediata.
+              </p>
+            </div>
+            <div class="form-wrap">
+              <form id="serviceForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="branch">Sucursal</label>
+                    <select id="branch" class="form-select" required>
+                      <option value="">Selecciona una sucursal</option>
+                      <option>Casa Central · Oruro</option>
+                      <option>Sucursal Acera Oeste · Oruro</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="service">Servicio</label>
+                    <select id="service" class="form-select" required>
+                      <option value="">Selecciona un servicio</option>
+                      <option>Color & Balayage</option>
+                      <option>Corte</option>
+                      <option>Peinado</option>
+                      <option>Maquillaje social</option>
+                      <option>Maquillaje folklorico</option>
+                      <option>Manicure & Pedicure</option>
+                      <option>Facial</option>
+                      <option>Novias & Quinceaños</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="date">Fecha</label>
+                    <input
+                      id="date"
+                      type="date"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="time">Hora</label>
+                    <select id="time" class="form-select" required>
+                      <option value="">Primero selecciona fecha</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <hr class="my-3" />
+                    <h3>Datos de la clienta</h3>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="name">Nombre completo</label>
+                    <input
+                      id="name"
+                      class="form-control"
+                      autocomplete="name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="phone"
+                      >Celular / WhatsApp</label
+                    >
+                    <input
+                      id="phone"
+                      type="tel"
+                      class="form-control"
+                      placeholder="Ej. 7XXXXXXX"
+                      pattern="[0-9+ ]{7,15}"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="email"
+                      >Correo electrónico</label
+                    >
+                    <input
+                      id="email"
+                      type="email"
+                      class="form-control"
+                      autocomplete="email"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="notes"
+                      >Preferencias (opcional)</label
+                    >
+                    <input
+                      id="notes"
+                      class="form-control"
+                      placeholder="Cuéntanos qué te gustaría lograr"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <div id="availability" class="small text-danger"></div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-gold" type="submit">
+                      Confirmar reserva
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div
+                id="confirmation"
+                class="confirmation"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <h4>IL SALONE</h4>
+        <small>© 2026 Il Salone Lia Vincenzo · Oruro, Bolivia</small>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      (() => {
+        const originalForm = document.querySelector("#serviceForm");
+        const realForm = originalForm.cloneNode(true);
+        originalForm.replaceWith(realForm);
+        const dateInput = realForm.querySelector("#date");
+        const timeInput = realForm.querySelector("#time");
+        const noticeBox = document.querySelector("#availability");
+        const confirmationBox = document.querySelector("#confirmation");
+        let availabilitySequence = 0;
+        let activeServices = [];
+        const oruroToday = () => {
+          const parts = new Intl.DateTimeFormat("en-CA", {
+            timeZone: "America/La_Paz", year: "numeric", month: "2-digit", day: "2-digit",
+          }).formatToParts(new Date());
+          const part = (type) => parts.find((item) => item.type === type).value;
+          return `${part("year")}-${part("month")}-${part("day")}`;
+        };
+        const oruroTime = () => {
+          const parts = new Intl.DateTimeFormat("en-GB", {
+            timeZone: "America/La_Paz", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+          }).formatToParts(new Date());
+          const part = (type) => parts.find((item) => item.type === type).value;
+          return `${part("hour")}:${part("minute")}`;
+        };
+        const setAvailabilityMessage = (message, available = false) => {
+          noticeBox.textContent = message;
+          noticeBox.className = `small ${available ? "text-white" : "text-danger"}`;
+        };
+        const weekdayForDate = (value) => {
+          const [year, month, day] = value.split("-").map(Number);
+          return new Date(Date.UTC(year, month - 1, day)).getUTCDay();
+        };
+        const loadServices = async () => {
+          const serviceSelect = realForm.querySelector("#service");
+          serviceSelect.disabled = true;
+          serviceSelect.innerHTML = '<option value="">Cargando servicios…</option>';
+          try {
+            const response = await fetch("/api/servicios-publicos");
+            const services = await response.json();
+            if (!response.ok) throw new Error(services.error || "No se pudieron cargar los servicios.");
+            activeServices = services;
+            serviceSelect.innerHTML = '<option value="">Selecciona un servicio</option>' + services.map((service) => `<option value="${Number(service.id)}">${String(service.nombre).replace(/[&<>\"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '\"': "&quot;" })[character])}</option>`).join("");
+            serviceSelect.disabled = false;
+            const requestedService = new URLSearchParams(location.search).get("servicio_id");
+            if (requestedService && services.some((service) => String(service.id) === requestedService))
+              serviceSelect.value = requestedService;
+          } catch (error) {
+            serviceSelect.innerHTML = '<option value="">No se pudieron cargar los servicios</option>';
+            setAvailabilityMessage(error.message);
+          }
+        };
+        dateInput.min = oruroToday();
+        const updateTimeOptions = async () => {
+          const sequence = ++availabilitySequence;
+          const date = dateInput.value;
+          const service = realForm.querySelector("#service").value;
+          const branch = realForm.querySelector("#branch").value;
+          const submitButton = realForm.querySelector('button[type="submit"]');
+          timeInput.innerHTML = '<option value="">Selecciona una hora</option>';
+          timeInput.disabled = true;
+          submitButton.disabled = true;
+          if (!date) {
+            timeInput.innerHTML = '<option value="">Primero selecciona fecha</option>';
+            setAvailabilityMessage("Selecciona sucursal, servicio y fecha para consultar los horarios.");
+            return;
+          }
+          if (!service || !branch) {
+            timeInput.innerHTML = '<option value="">Selecciona sucursal y servicio</option>';
+            setAvailabilityMessage("Selecciona sucursal y servicio para consultar los horarios.");
+            return;
+          }
+          const selectedService = activeServices.find((item) => String(item.id) === service);
+          if (!selectedService) {
+            timeInput.innerHTML = '<option value="">Selecciona un servicio válido</option>';
+            setAvailabilityMessage("El servicio seleccionado no está disponible. Actualiza la página.");
+            return;
+          }
+          const closing = weekdayForDate(date) === 0 ? 17 * 60 : 21 * 60;
+          const duration = Math.max(1, Number(selectedService.duracion_minutos) || 60);
+          const candidates = [];
+          for (let start = 9 * 60; start + duration <= closing; start += 60) {
+            const hour = `${String(Math.floor(start / 60)).padStart(2, "0")}:${String(start % 60).padStart(2, "0")}`;
+            if (date !== oruroToday() || hour > oruroTime()) candidates.push(hour);
+          }
+          if (!candidates.length) {
+            timeInput.innerHTML = '<option value="">No hay horarios disponibles para esa fecha</option>';
+            setAvailabilityMessage("No hay horarios disponibles para esa fecha.");
+            return;
+          }
+          setAvailabilityMessage("Comprobando horarios disponibles…");
+          try {
+            const results = await Promise.all(candidates.map(async (hour) => {
+              const params = new URLSearchParams({ tipo: "servicio", servicio_id: service, fecha: date, hora: hour, sucursal: branch });
+              const response = await fetch(`/api/disponibilidad?${params}`);
+              const result = await response.json();
+              if (!response.ok) throw new Error(result.error || "No se pudieron consultar los horarios.");
+              return result.disponible ? hour : null;
+            }));
+            if (sequence !== availabilitySequence) return;
+            const openHours = results.filter(Boolean);
+            if (!openHours.length) {
+              timeInput.innerHTML = '<option value="">No hay horarios disponibles para esa fecha</option>';
+              setAvailabilityMessage("No hay horarios disponibles para esa fecha.");
+              return;
+            }
+            openHours.forEach((hour) => timeInput.add(new Option(hour, hour)));
+            timeInput.disabled = false;
+            setAvailabilityMessage("Selecciona un horario disponible.");
+            submitButton.disabled = true;
+          } catch (error) {
+            if (sequence !== availabilitySequence) return;
+            timeInput.innerHTML = '<option value="">No se pudieron cargar los horarios</option>';
+            setAvailabilityMessage(error.message);
+          }
+        };
+        const checkAvailability = async () => {
+          const sequence = ++availabilitySequence;
+          const submitButton = realForm.querySelector('button[type="submit"]');
+          const date = dateInput.value;
+          const time = timeInput.value;
+          const service = realForm.querySelector("#service").value;
+          const branch = realForm.querySelector("#branch").value;
+          if (!date || !time || !service || !branch) {
+            submitButton.disabled = false;
+            setAvailabilityMessage("Selecciona sucursal, servicio, fecha y hora para comprobar disponibilidad.");
+            return null;
+          }
+          if (date < oruroToday() || (date === oruroToday() && time <= oruroTime())) {
+            submitButton.disabled = true;
+            setAvailabilityMessage("Horario no disponible");
+            return false;
+          }
+          submitButton.disabled = true;
+          setAvailabilityMessage("Comprobando disponibilidad…");
+          try {
+            const params = new URLSearchParams({ tipo: "servicio", servicio_id: service, fecha: date, hora: time, sucursal: branch });
+            const response = await fetch(`/api/disponibilidad?${params}`);
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error || "No se pudo consultar la disponibilidad.");
+            if (sequence !== availabilitySequence) return null;
+            setAvailabilityMessage(result.mensaje, result.disponible);
+            submitButton.disabled = !result.disponible;
+            return result.disponible;
+          } catch (error) {
+            if (sequence !== availabilitySequence) return null;
+            setAvailabilityMessage(error.message);
+            submitButton.disabled = true;
+            return false;
+          }
+        };
+        [realForm.querySelector("#branch"), realForm.querySelector("#service"), dateInput].forEach((control) => control.addEventListener("change", updateTimeOptions));
+        [timeInput, realForm.querySelector("#name"), realForm.querySelector("#phone")].forEach((control) => control.addEventListener("change", checkAvailability));
+        updateTimeOptions();
+        loadServices().then(updateTimeOptions);
+        realForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          setAvailabilityMessage("");
+          confirmationBox.style.display = "none";
+          if (!realForm.checkValidity()) {
+            realForm.classList.add("was-validated");
+            return;
+          }
+          try {
+            const latestAvailability = await checkAvailability();
+            if (latestAvailability !== true) {
+              setAvailabilityMessage(latestAvailability === false
+                ? "Horario no disponible"
+                : "Selecciona sucursal, servicio, fecha y hora para comprobar disponibilidad.");
+              return;
+            }
+            const response = await fetch("/api/solicitudes/servicio", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nombre: realForm.querySelector("#name").value,
+                telefono: realForm.querySelector("#phone").value,
+                correo: realForm.querySelector("#email").value,
+                sucursal: realForm.querySelector("#branch").value,
+                servicio_id: realForm.querySelector("#service").value,
+                fecha: realForm.querySelector("#date").value,
+                hora: realForm.querySelector("#time").value,
+                notas: realForm.querySelector("#notes").value,
+              }),
+            });
+            const result = await response.json();
+            if (!response.ok)
+              throw new Error(
+                result.error || "No se pudo registrar la reserva.",
+              );
+            confirmationBox.innerHTML = `<h3 class="mb-2">¡Reserva registrada!</h3><p>Tu cita fue guardada correctamente.</p><p class="mb-0">Código: <b>${result.codigo}</b></p>`;
+            confirmationBox.style.display = "block";
+            confirmationBox.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            realForm.reset();
+            realForm.classList.remove("was-validated");
+            document.querySelector("#time").innerHTML =
+              '<option value="">Primero selecciona fecha</option>';
+          } catch (error) {
+            setAvailabilityMessage(error.message);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

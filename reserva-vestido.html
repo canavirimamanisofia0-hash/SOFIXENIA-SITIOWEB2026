@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Reservar vestido | Il Salone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css?v=20261019-responsive-services-8" />
+    <style>
+      #tryTime::-webkit-calendar-picker-indicator {
+        filter: brightness(0) invert(1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html"
+          >IL SALONE<small>LIA VINCENZO</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"> </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+          <ul class="navbar-nav">
+            <li>
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li>
+              <a class="nav-link" href="catalogo.html">Vestidos</a>
+            </li>
+            <li>
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html"
+                ><i class="fa-solid fa-user-lock me-1"></i>Iniciar sesión</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main class="section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="text-center mb-5">
+              <span class="eyebrow">Tu look especial</span>
+              <h1 class="section-title mt-2">Reserva un vestido</h1>
+              <p>
+                Este proceso es exclusivo para la reserva de vestidos y prueba
+                de talla.
+              </p>
+            </div>
+            <div class="form-wrap">
+              <form id="dressForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="dress">Vestido</label>
+                    <select id="dress" class="form-select" required>
+                      <option value="">Selecciona un vestido</option>
+                      <option>Aurora · Champagne · M · Bs 480</option>
+                      <option>
+                        Esmeralda · Verde esmeralda · S/M · Bs 520
+                      </option>
+                      <option>Rubí · Rojo vino · M · Bs 390</option>
+                      <option>Perla · Rosa palo · S · Bs 550</option>
+                      <option>Onyx · Negro · M/L · Bs 430</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Precio de referencia</label>
+                    <div class="price-summary" id="dressPriceSummary">
+                      Selecciona un vestido para ver el precio.
+                    </div>
+                    <small class="form-note"
+                      >El precio se confirma al realizar la prueba en
+                      salón.</small
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="dressSizeSummary"
+                      >Talla del vestido</label
+                    >
+                    <div
+                      class="price-summary"
+                      id="dressSizeSummary"
+                      aria-live="polite"
+                    >
+                      Selecciona un vestido para ver su talla.
+                    </div>
+                    <small class="form-note"
+                      >La talla se asigna automáticamente según el vestido
+                      elegido.</small
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="eventDate"
+                      >Fecha del evento</label
+                    >
+                    <input
+                      id="eventDate"
+                      type="date"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="tryDate"
+                      >Fecha de prueba</label
+                    >
+                    <input
+                      id="tryDate"
+                      type="date"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label">Hora de prueba</label>
+                    <input id="tryTime" type="hidden" />
+                    <div id="tryTimeSlots" class="schedule-options" role="group" aria-label="Horarios de prueba disponibles"></div>
+                    <p id="tryTimeMessage" class="form-note mt-2" aria-live="polite">Selecciona el vestido y las fechas para consultar los horarios.</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Sucursal de prueba</label>
+                    <div id="dressBranch" class="price-summary">Boutique Lía Vincenzo</div>
+                  </div>
+                  <div class="col-12">
+                    <hr class="my-3" />
+                    <h3>Datos de la clienta</h3>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="client"
+                      >Nombre completo</label
+                    >
+                    <input id="client" class="form-control" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="cell"
+                      >Celular / WhatsApp</label
+                    >
+                    <input
+                      id="cell"
+                      type="tel"
+                      class="form-control"
+                      pattern="[0-9+ ]{7,15}"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="mail"
+                      >Correo electrónico</label
+                    >
+                    <input
+                      id="mail"
+                      type="email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="comment"
+                      >Comentario (opcional)</label
+                    >
+                    <input
+                      id="comment"
+                      class="form-control"
+                      placeholder="Color o preferencia"
+                    />
+                  </div>
+                  <div class="col-12">
+                    <div id="dressWarning" class="small text-danger"></div>
+                    <button class="btn btn-gold mt-2" type="submit">
+                      Confirmar reserva de vestido
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div
+                id="dressConfirmation"
+                class="confirmation"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <h4>IL SALONE</h4>
+        <small>© 2026 Il Salone Lia Vincenzo · Oruro, Bolivia</small>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const f = document.querySelector("#dressForm"),
+        eventDate = document.querySelector("#eventDate"),
+        tryDate = document.querySelector("#tryDate"),
+        warn = document.querySelector("#dressWarning"),
+        box = document.querySelector("#dressConfirmation"),
+        today = new Date().toISOString().split("T")[0];
+      eventDate.min = tryDate.min = today;
+      const requested = new URLSearchParams(location.search).get("vestido");
+      if (requested) {
+        [...document.querySelector("#dress").options]
+          .find((o) => o.value.startsWith(requested))
+          ?.setAttribute("selected", "selected");
+      }
+      f.addEventListener("submit", (e) => {
+        e.preventDefault();
+        box.style.display = "none";
+        warn.textContent = "";
+        if (!f.checkValidity()) {
+          f.classList.add("was-validated");
+          return;
+        }
+        if (tryDate.value >= eventDate.value) {
+          warn.textContent =
+            "La prueba debe programarse antes de la fecha del evento.";
+          return;
+        }
+        const code = "VT-" + Date.now().toString().slice(-6),
+          dateFormat = (s) => s.split("-").reverse().join("/");
+        box.innerHTML = `<h3 class="mb-2">¡Solicitud confirmada!</h3>
+            <p class="mb-1">
+                <b>${document.querySelector("#client").value}</b>, reservamos temporalmente el vestido <b>${document.querySelector("#dress").value.split(" · ")[0]}</b> para tu prueba.</p>
+                <p class="mb-0">Prueba: ${dateFormat(tryDate.value)}<br>Evento: ${dateFormat(eventDate.value)}<br>Código de solicitud: <b>${code}</b>
+                    <br>
+                    <small>La disponibilidad final se confirma al realizar la prueba en salón.</small>
+                </p>`;
+        box.style.display = "block";
+        box.scrollIntoView({ behavior: "smooth", block: "center" });
+        f.reset();
+        f.classList.remove("was-validated");
+      });
+    </script>
+    <script>
+      (() => {
+        const select = document.querySelector("#dress");
+        const requested = new URLSearchParams(window.location.search).get("vestido");
+        const requestedId = new URLSearchParams(window.location.search).get("vestido_id");
+        const catalog = JSON.parse(
+          localStorage.getItem("ilSaloneCatalog") || "[]",
+        );
+        const uniqueCatalog = catalog.filter(
+          (dress, index, array) =>
+            dress.name &&
+            array.findIndex((item) => item.name === dress.name) === index,
+        );
+
+        if (uniqueCatalog.length) select.innerHTML = '<option value="">Selecciona un vestido</option>';
+        uniqueCatalog.forEach((dress) => {
+          const option = document.createElement("option");
+          option.value = dress.name;
+          option.textContent = `${dress.name} · ${dress.color} · Talla ${dress.size} · Bs ${dress.price}`;
+          option.disabled = !dress.available;
+          select.appendChild(option);
+        });
+
+        if (requested) {
+          const selected = uniqueCatalog.find(
+            (dress) => dress.name === requested,
+          );
+          if (selected) {
+            select.value = selected.name;
+          }
+        }
+      })();
+    </script>
+    <script>
+      (async () => {
+        const oldForm = document.querySelector("#dressForm");
+        const form = oldForm.cloneNode(true);
+        oldForm.replaceWith(form);
+        const select = form.querySelector("#dress");
+        const priceBox = document.querySelector("#dressPriceSummary");
+        const sizeBox = document.querySelector("#dressSizeSummary");
+        const warning = document.querySelector("#dressWarning");
+        const confirmation = document.querySelector("#dressConfirmation");
+        const confirmButton = form.querySelector('button[type="submit"]');
+        const tryTime = form.querySelector("#tryTime");
+        const tryDate = form.querySelector("#tryDate");
+        const eventDate = form.querySelector("#eventDate");
+        const timeSlots = form.querySelector("#tryTimeSlots");
+        const timeMessage = form.querySelector("#tryTimeMessage");
+        const todayParts = new Intl.DateTimeFormat("en-CA", { timeZone: "America/La_Paz", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+        const today = `${todayParts.find((part) => part.type === "year").value}-${todayParts.find((part) => part.type === "month").value}-${todayParts.find((part) => part.type === "day").value}`;
+        form.querySelector("#eventDate").min = today;
+        form.querySelector("#tryDate").min = today;
+        let dresses = [];
+        try {
+          const response = await fetch("/api/vestidos-publicos");
+          const catalog = await response.json();
+          if (!response.ok) throw new Error(catalog.error || "No se pudo cargar el catálogo.");
+          dresses = catalog.map((dress) => ({
+            id: dress.id,
+            name: dress.nombre,
+            category: dress.categoria,
+            color: dress.color,
+            size: dress.talla,
+            price: dress.precio,
+            image: dress.imagen,
+            available: Boolean(dress.disponible),
+          }));
+        } catch (error) {
+          warning.textContent = error.message;
+          confirmButton.disabled = true;
+          return;
+        }
+        const requested = new URLSearchParams(location.search).get("vestido");
+        const requestedId = new URLSearchParams(location.search).get("vestido_id");
+        if (dresses.length) {
+          select.innerHTML = '<option value="">Selecciona un vestido</option>';
+          dresses.forEach((dress) => {
+            const option = new Option(
+              `${dress.name} · ${dress.color} · Talla ${dress.size}`,
+              dress.id,
+            );
+            option.disabled = false;
+            select.add(option);
+          });
+          if (requestedId && dresses.some((dress) => String(dress.id) === requestedId))
+            select.value = requestedId;
+          else if (requested && dresses.some((dress) => dress.name === requested))
+            select.value = String(dresses.find((dress) => dress.name === requested).id);
+        }
+        const selected = () =>
+          dresses.find((dress) => String(dress.id) === select.value);
+        const updatePrice = () => {
+          const dress = selected();
+          priceBox.textContent = dress
+            ? `Bs ${dress.price} · Selecciona fecha para consultar disponibilidad`
+            : "Selecciona un vestido para ver el precio.";
+          sizeBox.textContent = dress
+            ? `Talla ${dress.size}`
+            : "Selecciona un vestido para ver su talla.";
+        };
+        let availabilitySequence = 0;
+        let lastAvailabilityMessage = "";
+        const buildAvailabilityParams = (dress, date, time) => new URLSearchParams({
+          tipo: "vestido",
+          vestido_id: dress.id,
+          vestido: dress.name,
+          imagen: dress.image || "",
+          fecha_evento: eventDate.value,
+          fecha_prueba: date,
+          hora: time,
+          sucursal: "Boutique Lía Vincenzo",
+        });
+        const loadTrialSlots = async () => {
+          const sequence = ++availabilitySequence;
+          const dress = selected();
+          const date = tryDate.value;
+          const event = eventDate.value;
+          tryTime.value = "";
+          timeSlots.replaceChildren();
+          confirmButton.disabled = true;
+          if (!dress || !date || !event || date >= event) {
+            timeMessage.textContent = date && event && date >= event
+              ? "La fecha de prueba debe ser anterior a la fecha del evento."
+              : "Selecciona el vestido y ambas fechas para consultar los horarios.";
+            warning.textContent = "";
+            return;
+          }
+          timeMessage.textContent = "Comprobando horarios disponibles…";
+          const [year, month, day] = date.split("-").map(Number);
+          const closing = new Date(Date.UTC(year, month - 1, day)).getUTCDay() === 0 ? 17 * 60 : 21 * 60;
+          const candidates = [];
+          for (let minute = 9 * 60; minute + 30 <= closing; minute += 30) {
+            candidates.push(`${String(Math.floor(minute / 60)).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`);
+          }
+          try {
+            const results = await Promise.all(candidates.map(async (time) => {
+              const response = await fetch(`/api/disponibilidad?${buildAvailabilityParams(dress, date, time)}`);
+              const result = await response.json();
+              if (!response.ok) throw new Error(result.error || result.mensaje || "No se pudieron consultar los horarios.");
+              return { time, available: Boolean(result.disponible), message: result.mensaje };
+            }));
+            if (sequence !== availabilitySequence) return;
+            results.forEach(({ time, available }) => {
+              const button = document.createElement("button");
+              button.type = "button";
+              button.className = "schedule-chip";
+              button.textContent = time;
+              button.disabled = !available;
+              button.setAttribute("aria-label", `${time}, ${available ? "disponible" : "no disponible"}`);
+              if (!available) button.title = "Horario ocupado o fuera de atención";
+              button.addEventListener("click", () => {
+                tryTime.value = time;
+                timeSlots.querySelectorAll(".schedule-chip").forEach((slot) => slot.classList.toggle("is-selected", slot === button));
+                checkAvailability();
+              });
+              timeSlots.append(button);
+            });
+            const availableCount = results.filter((item) => item.available).length;
+            timeMessage.textContent = availableCount
+              ? `${availableCount} horarios disponibles. Los horarios ocupados aparecen deshabilitados.`
+              : "No hay horarios disponibles para la fecha de prueba seleccionada.";
+            warning.textContent = "";
+          } catch (error) {
+            if (sequence !== availabilitySequence) return;
+            timeMessage.textContent = "No se pudieron cargar los horarios.";
+            warning.textContent = error.message;
+          }
+        };
+        const checkAvailability = async () => {
+          const sequence = ++availabilitySequence;
+          const dress = selected();
+          const selectedEvent = eventDate.value;
+          const selectedTrial = tryDate.value;
+          const selectedTime = tryTime.value;
+          warning.textContent = "";
+          if (!dress || !selectedEvent || !selectedTrial || !selectedTime) {
+            updatePrice();
+            confirmButton.disabled = true;
+            return null;
+          }
+          priceBox.textContent = `Bs ${dress.price} · Comprobando disponibilidad…`;
+          confirmButton.disabled = true;
+          try {
+            const params = buildAvailabilityParams(dress, selectedTrial, selectedTime);
+            const response = await fetch(`/api/disponibilidad?${params}`);
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error || "No se pudo consultar la disponibilidad.");
+            if (sequence !== availabilitySequence) return null;
+            lastAvailabilityMessage = result.mensaje || "";
+            priceBox.textContent = `Bs ${dress.price} · ${result.mensaje}`;
+            if (!result.disponible) warning.textContent = result.mensaje || "No hay disponibilidad para esa selección.";
+            confirmButton.disabled = !result.disponible;
+            if (!result.disponible && /horario|hora|prueba/i.test(result.mensaje || "")) {
+              const occupiedSlot = [...timeSlots.querySelectorAll(".schedule-chip")].find((slot) => slot.textContent === selectedTime);
+              if (occupiedSlot) occupiedSlot.disabled = true;
+              tryTime.value = "";
+              timeSlots.querySelectorAll(".schedule-chip").forEach((slot) => slot.classList.remove("is-selected"));
+              timeMessage.textContent = result.mensaje || "El horario acaba de ocuparse. Selecciona otro.";
+            }
+            return result.disponible;
+          } catch (error) {
+            if (sequence !== availabilitySequence) return null;
+            lastAvailabilityMessage = error.message;
+            priceBox.textContent = `Bs ${dress.price} · No se pudo comprobar disponibilidad`;
+            warning.textContent = error.message;
+            confirmButton.disabled = true;
+            return false;
+          }
+        };
+        select.addEventListener("change", () => { updatePrice(); loadTrialSlots(); });
+        eventDate.addEventListener("change", loadTrialSlots);
+        tryDate.addEventListener("change", loadTrialSlots);
+        updatePrice();
+        loadTrialSlots();
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          warning.textContent = "";
+          confirmation.style.display = "none";
+          if (!form.checkValidity()) {
+            form.classList.add("was-validated");
+            return;
+          }
+          const dress = selected();
+          if (!dress) {
+            warning.textContent = "Selecciona un vestido.";
+            return;
+          }
+          if (!tryTime.value) {
+            warning.textContent = "Selecciona un horario de prueba disponible.";
+            timeSlots.scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+          }
+          if (
+            tryDate.value >= eventDate.value
+          ) {
+            warning.textContent = "La prueba debe realizarse antes del evento.";
+            return;
+          }
+          try {
+            const latestAvailability = await checkAvailability();
+            if (latestAvailability !== true) {
+              warning.textContent = latestAvailability === false
+                ? lastAvailabilityMessage || "La disponibilidad cambió. Actualiza los horarios y vuelve a seleccionar."
+                : "No se pudo confirmar la disponibilidad del vestido.";
+              return;
+            }
+            const response = await fetch("/api/solicitudes/vestido", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                nombre: form.querySelector("#client").value,
+                telefono: form.querySelector("#cell").value,
+                correo: form.querySelector("#mail").value,
+                talla_habitual: dress.size,
+                vestido_id: dress.id,
+                fecha_evento: eventDate.value,
+                fecha_prueba: tryDate.value,
+                hora: tryTime.value,
+                sucursal: "Boutique Lía Vincenzo",
+                comentario: form.querySelector("#comment").value,
+                vestido: dress,
+              }),
+            });
+            const result = await response.json();
+            if (!response.ok)
+              throw new Error(
+                result.error || "No se pudo registrar la reserva.",
+              );
+            localStorage.setItem(
+              "ilSaloneAvailabilityDate",
+              eventDate.value,
+            );
+            localStorage.setItem("ilSaloneAvailabilityUpdated", String(Date.now()));
+            confirmation.innerHTML = `<h3 class="mb-2">¡Solicitud registrada!</h3><p>Vestido: <b>${dress.name}</b><br>Fecha del evento: <b>${eventDate.value.split("-").reverse().join("/")}</b><br>Fecha de prueba: <b>${tryDate.value.split("-").reverse().join("/")}</b><br>Hora de prueba: <b>${tryTime.value}</b><br>Sucursal: <b>Boutique Lía Vincenzo</b><br>Precio de referencia: <b>Bs ${dress.price}</b><br>Código: <b>${result.codigo}</b></p>`;
+            confirmation.style.display = "block";
+            confirmation.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            form.reset();
+            form.classList.remove("was-validated");
+            updatePrice();
+            loadTrialSlots();
+          } catch (error) {
+            warning.textContent = error.message;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

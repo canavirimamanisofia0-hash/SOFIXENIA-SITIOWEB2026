@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Servicios | Il Salone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="estilos.css?v=20261019-responsive-services-8" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand brand" href="index.html"
+          >IL SALONE<small>LIA VINCENZO</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"> </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="nav">
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="servicios.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalogo.html">Vestidos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html"
+                ><i class="fa-solid fa-user-lock me-1"></i>Iniciar sesión</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-gold ms-lg-3" href="reserva-servicio.html"
+                >Reservar</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header class="page-hero-servicios">
+      <div class="container">
+        <span class="eyebrow">Cuidado profesional</span>
+        <h1>Servicios</h1>
+        <p>Tratamientos personalizados para revelar tu mejor versión.</p>
+      </div>
+    </header>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="text-center mb-5 reveal">
+            <span class="eyebrow">Elige tu experiencia</span>
+            <h2 class="section-title mt-2">Hecho para resaltar tu esencia</h2>
+          </div>
+          <div class="row g-4" id="serviceGrid">
+            <div class="col-md-6 col-lg-4 reveal">
+              <article class="card service-card position-relative">
+                <span class="service-tag">Más solicitado</span>
+                <img
+                  src="imagenes/galeriasyotros/Screenshot_20260818-224437.jpg.jpeg"
+                  alt="Coloración"
+                />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-wand-magic-sparkles text-gold"> </i>
+                    Color & Balayage
+                  </h3>
+                  <p>
+                    Diagnóstico, coloración y técnicas de iluminación a medida.
+                  </p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>2–4 h</span>
+                    <span> <i class="fa-solid fa-user-group"> </i>Premium</span>
+                  </div>
+                  <span class="price">Desde Bs 250</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Color & Balayage"
+                    data-time="2 a 4 horas"
+                    data-description="Incluye diagnóstico de color, aplicación técnica, lavado y peinado final. El precio varía según largo y base del cabello."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+              <article class="card service-card position-relative">
+                <img
+                  src="imagenes/galeriasyotros/Screenshot_20260818-225904.png"
+                />
+                <div class="card-body">
+                  <h3><i class="fa-solid fa-scissors text-gold"> </i> Corte</h3>
+                  <p>Diseños que armonizan con tu rostro, estilo y rutina.</p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>60–90 min</span>
+                    <span> <i class="fa-solid fa-star"> </i>Clásico</span>
+                  </div>
+                  <span class="price">Desde Bs 90</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Corte & Peinado"
+                    data-time="60 a 90 minutos"
+                    data-description="Asesoría de imagen, corte personalizado, lavado y peinado profesional para llevar tu estilo con confianza."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+              <article class="card service-card position-relative">
+                <img
+                  src="imagenes/galeriasyotros/Screenshot_20260818-230305~2.jpg corte de cabello.jpeg"
+                  alt="Corte de cabello"
+                />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-scissors text-gold"> </i> Peinado
+                  </h3>
+                  <p>Diseños que armonizan con tu rostro, estilo y rutina.</p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>60–90 min</span>
+                    <span> <i class="fa-solid fa-star"> </i>Clásico</span>
+                  </div>
+                  <span class="price">Desde Bs 90</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Corte & Peinado"
+                    data-time="60 a 90 minutos"
+                    data-description="Asesoría de imagen, corte personalizado, lavado y peinado profesional para llevar tu estilo con confianza."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+              <article class="card service-card position-relative">
+                <span class="service-tag">Nuevo</span>
+                <img
+                  src="imagenes/galeriasyotros/494008297_1439295197397169_95293583963074765_n.jpg"
+                  alt="Maquillaje"
+                />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-palette text-gold"> </i> Maquillaje
+                    social
+                  </h3>
+                  <p>
+                    Un look que potencia tus rasgos para eventos especiales.
+                  </p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>60 min</span>
+                    <span> <i class="fa-solid fa-camera"> </i>Eventos</span>
+                  </div>
+                  <span class="price">Desde Bs 150</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Maquillaje social"
+                    data-time="60 minutos"
+                    data-description="Preparación de piel y maquillaje de larga duración adaptado a tu evento, vestuario y personalidad."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+              <article class="card service-card position-relative">
+                <span class="service-tag">Nuevo</span>
+                <img src="imagenes/galeriasyotros/copi.jpg" alt="Maquillaje" />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-palette text-gold"> </i> Maquillaje
+                    folklorico
+                  </h3>
+                  <p>
+                    Un look que potencia tus rasgos para eventos especiales.
+                  </p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>60 min</span>
+                    <span> <i class="fa-solid fa-camera"> </i>Eventos</span>
+                  </div>
+                  <span class="price">Desde Bs 150</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Maquillaje social"
+                    data-time="60 minutos"
+                    data-description="Preparación de piel y maquillaje de larga duración adaptado a tu evento, vestuario y personalidad."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal">
+              <article class="card service-card position-relative">
+                <img
+                  src="imagenes/galeriasyotros/756612835_1588133952855711_4353477909330351086_n.webp"
+                  alt="Manicure"
+                />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-hand-sparkles text-gold"> </i>
+                    Manicure & Pedicure
+                  </h3>
+                  <p>Cuidado, color y diseños para unas manos protagonistas.</p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>60–90 min</span>
+                    <span> <i class="fa-solid fa-gem"> </i>Nail art</span>
+                  </div>
+                  <span class="price">Desde Bs 70</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Manicure & Pedicure"
+                    data-time="60 a 90 minutos"
+                    data-description="Limpieza, hidratación, esmaltado y diseño opcional para manos y pies perfectamente cuidados."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-1">
+              <article class="card service-card position-relative">
+                <img src="imagenes/galeriasyotros/facial.jpeg" alt="Facial" />
+                <div class="card-body">
+                  <h3><i class="fa-solid fa-spa text-gold"> </i> Faciales</h3>
+                  <p>Tratamientos para limpiar, hidratar y renovar tu piel.</p>
+                  <div class="service-meta">
+                    <span> <i class="fa-regular fa-clock"> </i>75 min</span>
+                    <span> <i class="fa-solid fa-leaf"> </i>Skin care</span>
+                  </div>
+                  <span class="price">Desde Bs 120</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Faciales"
+                    data-time="75 minutos"
+                    data-description="Diagnóstico de piel, limpieza profunda e hidratación según las necesidades de tu rostro."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal reveal-delay-2">
+              <article class="card service-card position-relative">
+                <span class="service-tag">Especial</span>
+                <img
+                  src="imagenes/galeriasyotros/489841096_1423179809008708_1509042012516122319_ncopia.jpg"
+                  alt="Novia"
+                />
+                <div class="card-body">
+                  <h3>
+                    <i class="fa-solid fa-crown text-gold"> </i> Novias &
+                    Quinceaños
+                  </h3>
+                  <p>
+                    Prueba, peinado y maquillaje para tu día más importante.
+                  </p>
+                  <div class="service-meta">
+                    <span>
+                      <i class="fa-regular fa-clock"> </i>Según agenda</span
+                    >
+                    <span>
+                      <i class="fa-solid fa-heart"> </i>Prueba previa</span
+                    >
+                  </div>
+                  <span class="price">Cotización</span>
+                  <button
+                    class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info"
+                    data-service="Novias & Quinceaños"
+                    data-time="Según propuesta"
+                    data-description="Creamos una propuesta completa de maquillaje y peinado con prueba previa para que disfrutes tu gran día sin preocupaciones."
+                  >
+                    Más información
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="text-center mt-5 reveal">
+            <a class="btn btn-gold" href="reserva-servicio.html"
+              >Reservar mi cita</a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="dark-section section before-after-section">
+        <div class="container">
+          <div class="text-center mb-5 reveal">
+            <span class="eyebrow">Resultados reales</span>
+            <h2 class="section-title mt-2">Antes y después</h2>
+            <p class="mx-auto" style="max-width: 620px">
+              Cada círculo presenta una comparación. Pasa el cursor encima o
+              tócala en celular para ver el resultado final.
+            </p>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 col-xl-3">
+              <article class="ba-card">
+                <span class="ba-label before">Antes</span
+                ><span class="ba-label after">Después</span>
+                <div class="ba-pair">
+                  <img
+                    src="imagenes/galeriasyotros/IMG-20260726-WA0032.jpg.jpeg"
+                    alt="Antes 1"
+                  /><img
+                    src="imagenes/galeriasyotros/IMG-20260726-WA0033.jpg.jpeg"
+                    alt="Después 1"
+                  />
+                </div>
+                <h3>Maquillaje Profesional</h3>
+              </article>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+              <article class="ba-card">
+                <span class="ba-label before">Antes</span
+                ><span class="ba-label after">Después</span>
+                <div class="ba-pair">
+                  <img
+                    src="imagenes/galeriasyotros/755063252_27705340275786540_4456556999930440627_n.webp"
+                    alt="Antes 2"
+                  /><img
+                    src="imagenes/galeriasyotros/757432034_952725114489631_2492385471535411291_n.webp"
+                    alt="Después 2"
+                  />
+                </div>
+                <h3>Styling profesional</h3>
+              </article>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+              <article class="ba-card">
+                <span class="ba-label before">Antes</span
+                ><span class="ba-label after">Después</span>
+                <div class="ba-pair">
+                  <img
+                    src="imagenes/galeriasyotros/756440588_27255520900785392_8558596210878632970_n.copia.jpg"
+                    alt="Antes 3"
+                  /><img
+                    src="imagenes/galeriasyotros/756612835_1588133952855711_4353477909330351086_n.copia.jpg"
+                    alt="Después 3"
+                  />
+                </div>
+                <h3>Color & brillo</h3>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <article class="ba-card">
+                <span class="ba-label before">Antes</span
+                ><span class="ba-label after">Después</span>
+                <div class="ba-pair">
+                  <img
+                    src="imagenes/galeriasyotros/740712495_1979841219331318_6122163277198025541_n.webp"
+                    alt="Antes 4"
+                  /><img
+                    src="imagenes/galeriasyotros/756590474_3862034707438548_3234085630197463572_n.webp"
+                    alt="Después 4"
+                  />
+                </div>
+                <h3>Renovación de look</h3>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h4>IL SALONE</h4>
+            <p>Tu espacio de belleza, estilo y confianza en Oruro.</p>
+          </div>
+          <div class="col-md-4">
+            <a class="btn btn-outline-gold" href="contacto.html">Contáctanos</a>
+          </div>
+        </div>
+        <hr />
+        <small>© 2026 Il Salone Lia Vincenzo</small>
+      </div>
+    </footer>
+    <div class="modal fade" id="serviceModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalServiceTitle">Servicio</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p id="modalServiceDescription"></p>
+            <p>
+              <i class="fa-regular fa-clock text-gold me-2"> </i>
+              <span id="modalServiceTime"> </span>
+            </p>
+            <div class="summary-box">
+              La reserva se confirma al elegir sucursal, fecha y horario
+              disponible.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="reserva-servicio.html" class="btn btn-gold"
+              >Reservar este servicio</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const modal = new bootstrap.Modal("#serviceModal");
+      document.querySelectorAll(".service-info").forEach((button) =>
+        button.addEventListener("click", () => {
+          document.querySelector("#modalServiceTitle").textContent =
+            button.dataset.service;
+          document.querySelector("#modalServiceDescription").textContent =
+            button.dataset.description;
+          document.querySelector("#modalServiceTime").textContent =
+            "Duración estimada: " + button.dataset.time;
+          modal.show();
+        }),
+      );
+      const reveal = new IntersectionObserver(
+        (items) =>
+          items.forEach((item) => {
+            if (item.isIntersecting) item.target.classList.add("is-visible");
+          }),
+        { threshold: 0.12 },
+      );
+      document
+        .querySelectorAll(".reveal")
+        .forEach((item) => reveal.observe(item));
+    </script>
+    <script>
+      document
+        .querySelectorAll(".ba-card")
+        .forEach((card) =>
+          card.addEventListener("click", () =>
+            card.classList.toggle("show-after"),
+          ),
+        );
+    </script>
+    <script>
+      (() => {
+        const grid = document.querySelector('#serviceGrid');
+        const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+        const durationText = (minutes) => Number(minutes) >= 60 ? `${Math.floor(Number(minutes) / 60)} h${Number(minutes) % 60 ? ` ${Number(minutes) % 60} min` : ''}` : `${Number(minutes)} min`;
+        const iconFor = (name) => /corte|peinado|color/i.test(name) ? 'fa-scissors' : /maquillaje/i.test(name) ? 'fa-palette' : /manicure|pedicure/i.test(name) ? 'fa-hand-sparkles' : 'fa-spa';
+        const loadPublicServices = async () => {
+          try {
+            const response = await fetch('/api/servicios-publicos');
+            const services = await response.json();
+            if (!response.ok) throw new Error(services.error || 'No se pudieron cargar los servicios.');
+            if (!services.length) {
+              grid.innerHTML = '<div class="col-12"><p class="text-center py-5">No hay servicios activos para mostrar.</p></div>';
+              return;
+            }
+            grid.innerHTML = services.map((service) => {
+              const duration = Number(service.duracion_minutos) || 60;
+              return `<div class="col-md-6 col-lg-4 reveal"><article class="card service-card position-relative"><img src="${escapeHtml(service.imagen || '')}" alt="${escapeHtml(service.nombre)}" loading="lazy"><div class="card-body"><h3><i class="fa-solid ${iconFor(service.nombre)} text-gold"></i> ${escapeHtml(service.nombre)}</h3><p>${escapeHtml(service.descripcion || 'Servicio disponible en el salón.')}</p><div class="service-meta"><span><i class="fa-regular fa-clock"></i>${durationText(duration)}</span><span><i class="fa-solid fa-star"></i>Servicio del salón</span></div><span class="price">Desde Bs ${Number(service.precio || 0).toLocaleString('es-BO')}</span><button class="btn btn-outline-gold btn-sm d-block w-100 mt-3 service-info" data-service-id="${Number(service.id)}" data-service="${escapeHtml(service.nombre)}" data-time="${durationText(duration)}" data-description="${escapeHtml(service.descripcion || '')}">Más información</button></div></article></div>`;
+            }).join('');
+            grid.querySelectorAll('.service-info').forEach((button) => button.addEventListener('click', () => {
+              document.querySelector('#modalServiceTitle').textContent = button.dataset.service;
+              document.querySelector('#modalServiceDescription').textContent = button.dataset.description;
+              document.querySelector('#modalServiceTime').textContent = `Duración estimada: ${button.dataset.time}`;
+              document.querySelector('#serviceModal .modal-footer a').href = `reserva-servicio.html?servicio_id=${Number(button.dataset.serviceId)}`;
+              modal.show();
+            }));
+            const reveal = new IntersectionObserver((items) => items.forEach((item) => { if (item.isIntersecting) item.target.classList.add('is-visible'); }), { threshold: 0.12 });
+            grid.querySelectorAll('.reveal').forEach((item) => reveal.observe(item));
+          } catch (error) {
+            const message = escapeHtml(error.message);
+            grid.innerHTML = `<div class="col-12"><p class="text-center py-5 text-danger">${message}</p></div>`;
+          }
+        };
+        loadPublicServices();
+      })();
+    </script>
+  </body>
+</html>

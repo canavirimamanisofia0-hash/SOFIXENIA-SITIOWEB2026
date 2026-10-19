@@ -1,0 +1,31 @@
+envVarGroups:
+  - name: birthday-cron-auth
+    envVars:
+      - key: BIRTHDAY_CRON_SECRET
+        generateValue: true
+
+services:
+  - type: web
+    name: il-salone-lia-vincenzo
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /
+    envVarGroups:
+      - name: birthday-cron-auth
+  - type: cron
+    name: il-salone-birthday-promotions
+    runtime: node
+    schedule: "0 * * * *"
+    buildCommand: npm install
+    startCommand: npm run cumpleanos
+    envVarGroups:
+      - name: birthday-cron-auth
+    envVars:
+      - key: BIRTHDAY_SITE_HOST
+        fromService:
+          type: web
+          name: il-salone-lia-vincenzo
+          property: host
